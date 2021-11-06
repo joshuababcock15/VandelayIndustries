@@ -1,0 +1,62 @@
+{
+    "factories":[
+        {
+          "factoryId": 0,
+          "factoryName": "Newark Latex Mfg.",
+          "factoryDescription": "Key East Coast facility for raw latex material to be processed into final products for the medical industry.",
+          "factoryAddress": {
+            "buildingName": "Go bills",
+            "streetLine1": "44",
+            "streetLine2": "3443",
+            "city": "Hamburg",
+            "stateProvince": "NY",
+            "zipPostalCode": "14075",
+            "country": "USA"
+          }
+        },
+        {
+            "factoryId": 1,
+            "factoryName": "Number 2",
+            "factoryDescription": "infor later.",
+            "factoryAddress": {
+              "buildingName": "Go bills",
+              "streetLine1": "44",
+              "streetLine2": "3443",
+              "city": "Hamburg",
+              "stateProvince": "NY",
+              "zipPostalCode": "14075",
+              "country": "USA"
+            }
+          }
+      ],
+      "warehouses":[
+        {
+          "factoryId": 0,
+          "factoryName": "warehouse.",
+          "factoryDescription": "Key East Coast facility for raw latex material to be processed into final products for the medical industry.",
+          "factoryAddress": {
+            "buildingName": "Go bills",
+            "streetLine1": "44",
+            "streetLine2": "3443",
+            "city": "Hamburg",
+            "stateProvince": "NY",
+            "zipPostalCode": "14075",
+            "country": "USA"
+          }
+        },
+        {
+            "factoryId": 1,
+            "factoryName": "Number 2",
+            "factoryDescription": "infor later.",
+            "factoryAddress": {
+              "buildingName": "Go bills",
+              "streetLine1": "44",
+              "streetLine2": "3443",
+              "city": "Hamburg",
+              "stateProvince": "NY",
+              "zipPostalCode": "14075",
+              "country": "USA"
+            }
+          }
+      ]
+}
