@@ -12,7 +12,29 @@
             "stateProvince": "NY",
             "zipPostalCode": "14075",
             "country": "USA"
-          }
+          },
+          "machiene": [
+            {
+                "machineId": 0,
+                "machineName": "Extruder AB-100",
+                "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+            },
+            {
+                "machineId": 1,
+                "machineName": "Machience 2",
+                "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+            },
+            {
+                "machineId": 2,
+                "machineName": "Machience 2",
+                "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+            },
+            {
+                "machineId": 3,
+                "machineName": "Machience 2",
+                "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+            }
+          ]
         },
         {
             "factoryId": 1,
@@ -26,7 +48,29 @@
               "stateProvince": "NY",
               "zipPostalCode": "14075",
               "country": "USA"
-            }
+            },
+            "machiene": [
+                {
+                    "machineId": 0,
+                    "machineName": "Extruder AB-100",
+                    "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+                },
+                {
+                    "machineId": 1,
+                    "machineName": "Machience 2",
+                    "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+                },
+                {
+                    "machineId": 2,
+                    "machineName": "Machience 2",
+                    "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+                },
+                {
+                    "machineId": 3,
+                    "machineName": "Machience 2",
+                    "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+                }
+              ]
           }
       ],
       "warehouses":[

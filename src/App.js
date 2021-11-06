@@ -8,6 +8,7 @@ import Warehouse from './pages/Warehouse';
 import Inventory from './pages/Inventory';
 import api from './api/factories';
 import Header from './components/Header';
+import Machiene from './pages/Machiene';
 
 const App = () => {
   const [factoryData, setFactoryData] = useState([]);
@@ -60,6 +61,9 @@ const App = () => {
         <Switch>
           <Route exact path="/warehouses/:warehouseId/inventory-items">
             <Inventory data={warehouseData} />
+          </Route>
+          <Route exact path="/factories/:factories/machienes">
+            <Machiene data={factoryData} />
           </Route>
           <Route exact path="/factories/:factoryId">
             <Factory data={factoryData} />
