@@ -1,0 +1,280 @@
+swagger: '2.0'
+info:
+  title: Vandelay Industries API - DRAFT
+  description: >
+    [Vandelay
+    Industries](http://www.urbandictionary.com/define.php?term=Vandelay) is a
+    vertically integrated chemical manufaturing, import/export, and sales
+    enterprise headquartered in the Upper West Side, NYC. It was founded by Art
+    Vandely in 1990.
+
+
+    It is known both for the quality of its product as well as its aggressive
+    salesperson recruiting program.
+
+
+    The Vandelay Industries API platform, documented here, represents a unified
+    view of its ERP and CRM systems for use by both internal applications and
+    3rd-party strategic partner system integrations.
+     
+         
+  version: 0.0.1
+host: vandelay.apivista.com
+schemes:
+  - https
+  - http
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /factories:
+    get:
+      tags:
+        - real estate
+      summary: List factories in the ERP system
+      description: >-
+        The factory is an important top-level object for tracking both
+        manufacturing activities as well as supply chain & order fulfillment,
+        underpinning Vandelays import/export business.
+      operationId: getFactories
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Factory'
+  '/factories/{factoryId}/machines':
+    get:
+      tags:
+        - capital equipment
+      summary: List machines at a given factory
+      description: >-
+        The factory is an important top-level object for tracking both
+        manufacturing activities as well as supply chain & order fulfillment,
+        underpinning Vandelays import/export business.
+      operationId: getMachines
+      parameters:
+        - name: factoryId
+          in: path
+          description: The ID of the factory housing the machine
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Machine'
+  /warehouses:
+    get:
+      tags:
+        - real estate
+      summary: List warehouses in the ERP system
+      description: >-
+        The warehouse is an important top-level object for tracking both inbound
+        material and outbound product.
+      operationId: getWarehouses
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Warehouse'
+  '/warehouses/{warehouseId}/inventory':
+    get:
+      tags:
+        - inventory
+      summary: Return an array containing inventory for a single warehouse
+      description: Currently an unpaged inventory list
+      operationId: getWarehouse
+      parameters:
+        - name: warehouseId
+          in: path
+          description: The ID of the warehouse to return inventory for inventory for
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Inventory'
+    post:
+      tags:
+        - inventory
+      summary: Records the addition of inventory to a warehouse
+      operationId: addItem
+      parameters:
+        - name: warehouseId
+          in: path
+          description: The ID of the warehouse receiving the item
+          required: true
+          type: string
+        - name: item
+          description: |
+            This object represents all the Item specifics
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/InventoryItem'
+      responses:
+        '201':
+          description: Item Added
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Inventory'
+    patch:
+      tags:
+        - inventory
+      summary: Updates an inventory item in a warehouse
+      operationId: updateItem
+      parameters:
+        - name: warehouseId
+          in: path
+          description: The ID of the warehouse containing the item
+          required: true
+          type: string
+        - name: item
+          description: |
+            This object represents all the Item specifics
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/InventoryUpdate'
+      responses:
+        '201':
+          description: Item Updated
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/InventoryItem'
+definitions:
+  Factory:
+    type: object
+    properties:
+      factoryId:
+        type: integer
+        format: int64
+      factoryName:
+        type: string
+        example: Newark Latex Mfg.
+      factoryDescription:
+        type: string
+        example: >-
+          Key East Coast facility for raw latex material to be processed into
+          final products for the medical industry.
+      factoryAddress:
+        $ref: '#/definitions/Address'
+  Machine:
+    type: object
+    properties:
+      factoryId:
+        type: integer
+        format: int64
+      machineId:
+        type: integer
+        format: int64
+      machineName:
+        type: string
+        example: Extruder AB-100
+      machineDescription: null
+      type: string
+      example: 'Extruder with 1,000fpm output capacity'
+  Warehouse:
+    type: object
+    properties:
+      warehouseId:
+        type: integer
+        format: int64
+      warehouseName:
+        type: string
+        example: Pier 10 Holdings
+      warehouseDescription:
+        type: string
+        example: >-
+          Key East Coast shipping/receiving location for storing finished
+          product, ready for distribution.
+      warehouseAddress:
+        $ref: '#/definitions/Address'
+  Inventory:
+    type: object
+    properties:
+      warehouseId:
+        type: integer
+        format: int64
+      itemId:
+        type: integer
+        format: int64
+      itemSKU:
+        type: integer
+        format: int64
+      itemQuantity:
+        type: string
+        example: int64
+      itemName:
+        type: string
+        example: Waterproof seal
+      itemDescription:
+        type: string
+        example: For sealing specimens to preserve them
+  InventoryUpdate:
+    type: object
+    properties:
+      warehouseId:
+        type: integer
+        format: int64
+      itemId:
+        type: integer
+        format: int64
+      itemSKU:
+        type: integer
+        format: int64
+      itemQuantity:
+        type: integer
+        format: int64
+      itemName:
+        type: string
+        example: Waterproof seal
+      itemDescription:
+        type: string
+        example: For sealing specimens to preserve them
+      itemDelete:
+        type: boolean
+        example: Set True to delete item from inventory
+  InventoryItem:
+    type: object
+    properties:
+      itemSKU:
+        type: integer
+        format: int64
+      itemQuantity:
+        type: integer
+        format: int64
+      itemName:
+        type: string
+        example: Waterproof seal
+      itemDescription:
+        type: string
+        example: For sealing specimens to preserve them
+  Address:
+    type: object
+    properties:
+      buildingName:
+        type: string
+      streetLine1:
+        type: string
+      streetLine2:
+        type: string
+      city:
+        type: string
+      stateProvince:
+        type: string
+      zipPostalCode:
+        type: string
+      country:
+        type: string
