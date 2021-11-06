@@ -31,8 +31,8 @@ export default function Header() {
         <Logo>
           <a href="/">Vandley Industries</a>
         </Logo>
-        <a href="/Factories">Vandley Industries</a>
-        <a href="/Warehouses">Vandley Industries</a>
+        <a href="/Factories">Factories</a>
+        <a href="/Warehouses">Warehouses</a>
       </div>
     </HeaderStyles>
   );
