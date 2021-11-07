@@ -1,106 +1,194 @@
 {
-    "factories":[
+  "factories": [
+    {
+      "factoryId": 0,
+      "factoryName": "Newark Latex Mfg.",
+      "factoryDescription": "Key East Coast facility for raw latex material to be processed into final products for the medical industry.",
+      "factoryAddress": {
+        "buildingName": "Go bills",
+        "streetLine1": "44",
+        "streetLine2": "3443",
+        "city": "Hamburg",
+        "stateProvince": "NY",
+        "zipPostalCode": "14075",
+        "country": "USA"
+      },
+      "machiene": [
         {
-          "factoryId": 0,
-          "factoryName": "Newark Latex Mfg.",
-          "factoryDescription": "Key East Coast facility for raw latex material to be processed into final products for the medical industry.",
-          "factoryAddress": {
-            "buildingName": "Go bills",
-            "streetLine1": "44",
-            "streetLine2": "3443",
-            "city": "Hamburg",
-            "stateProvince": "NY",
-            "zipPostalCode": "14075",
-            "country": "USA"
-          },
-          "machiene": [
-            {
-                "machineId": 0,
-                "machineName": "Extruder AB-100",
-                "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-            },
-            {
-                "machineId": 1,
-                "machineName": "Machience 2",
-                "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-            },
-            {
-                "machineId": 2,
-                "machineName": "Machience 2",
-                "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-            },
-            {
-                "machineId": 3,
-                "machineName": "Machience 2",
-                "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-            }
-          ]
+          "machineId": 0,
+          "machineName": "Extruder AB-100",
+          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
         },
         {
-            "factoryId": 1,
-            "factoryName": "Number 2",
-            "factoryDescription": "infor later.",
-            "factoryAddress": {
-              "buildingName": "Go bills",
-              "streetLine1": "44",
-              "streetLine2": "3443",
-              "city": "Hamburg",
-              "stateProvince": "NY",
-              "zipPostalCode": "14075",
-              "country": "USA"
-            },
-            "machiene": [
-                {
-                    "machineId": 0,
-                    "machineName": "Extruder AB-100",
-                    "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-                },
-                {
-                    "machineId": 1,
-                    "machineName": "Machience 2",
-                    "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-                },
-                {
-                    "machineId": 2,
-                    "machineName": "Machience 2",
-                    "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-                },
-                {
-                    "machineId": 3,
-                    "machineName": "Machience 2",
-                    "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-                }
-              ]
-          }
-      ],
-      "warehouses":[
+          "machineId": 1,
+          "machineName": "Machience 2",
+          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+        },
+        {
+          "machineId": 2,
+          "machineName": "Machience 2",
+          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+        },
+        {
+          "machineId": 3,
+          "machineName": "Machience 2",
+          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+        }
+      ]
+    },
+    {
+      "factoryId": 1,
+      "factoryName": "Number 2",
+      "factoryDescription": "infor later.",
+      "factoryAddress": {
+        "buildingName": "Go bills",
+        "streetLine1": "44",
+        "streetLine2": "3443",
+        "city": "Hamburg",
+        "stateProvince": "NY",
+        "zipPostalCode": "14075",
+        "country": "USA"
+      },
+      "machiene": [
+        {
+          "machineId": 0,
+          "machineName": "Extruder AB-100",
+          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+        },
+        {
+          "machineId": 1,
+          "machineName": "Machience 2",
+          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+        },
+        {
+          "machineId": 2,
+          "machineName": "Machience 2",
+          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+        },
+        {
+          "machineId": 3,
+          "machineName": "Machience 2",
+          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
+        }
+      ]
+    }
+  ],
+  "warehouses": [
+    {
+      "warehouseId": 0,
+      "warehouseName": "Pier 10 Holdings",
+      "warehouseDescription": "Key East Coast shipping/receiving location for storing finished product, ready for distribution.",
+      "warehouseAddress": {
+        "buildingName": "string",
+        "streetLine1": "string",
+        "streetLine2": "string",
+        "city": "string",
+        "stateProvince": "string",
+        "zipPostalCode": "string",
+        "country": "string"
+      },
+      "inventoryItems": [
         {
           "warehouseId": 0,
-          "warehouseName": "Pier 10 Holdings",
-          "warehouseDescription": "Key East Coast shipping/receiving location for storing finished product, ready for distribution.",
-          "warehouseAddress": {
-            "buildingName": "string",
-            "streetLine1": "string",
-            "streetLine2": "string",
-            "city": "string",
-            "stateProvince": "string",
-            "zipPostalCode": "string",
-            "country": "string"
-          }
+          "itemId": 0,
+          "itemSKU": 0,
+          "itemQuantity": 0,
+          "itemName": "Waterproof seal",
+          "itemDescription": "For sealing specimens to preserve them"
         },
         {
-            "warehouseId": 1,
-            "warehouseName": "Number 2",
-            "warehouseDescription": "Key East Coast shipping/receiving location for storing finished product, ready for distribution.",
-            "warehouseAddress": {
-              "buildingName": "string",
-              "streetLine1": "string",
-              "streetLine2": "string",
-              "city": "string",
-              "stateProvince": "string",
-              "zipPostalCode": "string",
-              "country": "string"
-            }
-          }
+          "warehouseId": 0,
+          "itemId": 0,
+          "itemSKU": 0,
+          "itemQuantity": 0,
+          "itemName": "Two",
+          "itemDescription": "For sealing specimens to preserve them"
+        },
+        {
+          "warehouseId": 0,
+          "itemId": 0,
+          "itemSKU": 0,
+          "itemQuantity": 0,
+          "itemName": "Three",
+          "itemDescription": "For sealing specimens to preserve them"
+        }
       ]
+    },
+    {
+      "warehouseId": 1,
+      "warehouseName": "Number 2",
+      "warehouseDescription": "Key East Coast shipping/receiving location for storing finished product, ready for distribution.",
+      "warehouseAddress": {
+        "buildingName": "string",
+        "streetLine1": "string",
+        "streetLine2": "string",
+        "city": "string",
+        "stateProvince": "string",
+        "zipPostalCode": "string",
+        "country": "string"
+      },
+      "inventoryItems": [
+        {
+          "warehouseId": 0,
+          "itemId": 0,
+          "itemSKU": 0,
+          "itemQuantity": 0,
+          "itemName": "Waterproof seal",
+          "itemDescription": "For sealing specimens to preserve them"
+        },
+        {
+          "warehouseId": 0,
+          "itemId": 0,
+          "itemSKU": 0,
+          "itemQuantity": 0,
+          "itemName": "Two",
+          "itemDescription": "For sealing specimens to preserve them"
+        },
+        {
+          "warehouseId": 0,
+          "itemId": 0,
+          "itemSKU": 0,
+          "itemQuantity": 0,
+          "itemName": "Three",
+          "itemDescription": "For sealing specimens to preserve them"
+        }
+      ]
+    }
+  ],
+  "inventoryItems": [
+    {
+      "id": 1,
+      "itemSKU": "dd",
+      "itemQuantity": "111",
+      "itemName": "Josh Babcock",
+      "itemDescription": "wwqasf"
+    },
+    {
+      "id": 2,
+      "itemSKU": "ff",
+      "itemName": "changing",
+      "itemDescription": "ff"
+    },
+    {
+      "id": 3,
+      "itemSKU": "111",
+      "itemQuantity": "333",
+      "itemName": "Go bills",
+      "itemDescription": "Please work"
+    },
+    {
+      "id": 5,
+      "itemSKU": "222",
+      "itemQuantity": "eee",
+      "itemName": "Josh Babcock",
+      "itemDescription": "go bills"
+    },
+    {
+      "id": 6,
+      "itemSKU": "go ",
+      "itemQuantity": "gd",
+      "itemName": "Josh Babcock",
+      "itemDescription": "asd"
+    }
+  ]
 }

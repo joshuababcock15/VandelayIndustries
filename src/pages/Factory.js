@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import CardFactory from '../components/CardFactory';
 
 const propTypes = {
@@ -20,6 +21,11 @@ const Factory = (props) => {
         name={factoryData?.factoryName}
         description={factoryData?.factoryDescription}
       />
+      <Link to={`/factories/${factoryId}/machienes`}>
+        <Button size="sm" className="mr-2">
+          Check out the list a Machienes
+        </Button>
+      </Link>
     </div>
   );
 };
