@@ -13,7 +13,7 @@ const Warehouses = (props) => {
   return (
     <div className="App container">
       {data.map((post, id) => (
-        <Link to={`/warehouses/${post.warehouseId}`} key={id}>
+        <Link to={`/warehouses/${post.id}`} key={id}>
           <Button color="success" size="sm" className="mr-2">
             {post.warehouseName}
           </Button>

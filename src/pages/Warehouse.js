@@ -20,6 +20,7 @@ const Warehouse = (props) => {
 
   const { warehouseId } = useParams();
   const warehouseData = data[warehouseId];
+
   const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);
@@ -30,7 +31,7 @@ const Warehouse = (props) => {
   return (
     <div>
       <h1>Warehouse {warehouseId}!</h1>
-      <Link to={`/warehouses/${warehouseId}/inventory-items`}>
+      <Link to={`/warehouses/${warehouseId}/inventoryItems`}>
         <Button color="success" size="sm" className="mr-2">
           Check out the Inventory
         </Button>
