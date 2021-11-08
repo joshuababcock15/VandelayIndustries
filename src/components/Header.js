@@ -20,8 +20,8 @@ const HeaderStyles = styled.header`
   border-bottom: 10px solid var(--black, black);
   display: grid;
   grid-template-columns: auto 1fr;
-  /* justify-content: space-between; */
-  /* align-items: stretch; */
+  justify-content: space-between;
+  align-items: stretch;
 `;
 
 export default function Header() {
@@ -31,8 +31,14 @@ export default function Header() {
         <Logo>
           <a href="/">Vandley Industries</a>
         </Logo>
-        <a href="/Factories">Factories</a>
-        <a href="/Warehouses">Warehouses</a>
+        <ul>
+          <li>
+            <a href="/factories">Factories</a>
+          </li>
+          <li>
+            <a href="/warehouses">warehouses</a>
+          </li>
+        </ul>
       </div>
     </HeaderStyles>
   );

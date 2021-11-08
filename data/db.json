@@ -1,81 +1,7 @@
 {
-  "factories": [
-    {
-      "factoryId": 0,
-      "factoryName": "Newark Latex Mfg.",
-      "factoryDescription": "Key East Coast facility for raw latex material to be processed into final products for the medical industry.",
-      "factoryAddress": {
-        "buildingName": "Go bills",
-        "streetLine1": "44",
-        "streetLine2": "3443",
-        "city": "Hamburg",
-        "stateProvince": "NY",
-        "zipPostalCode": "14075",
-        "country": "USA"
-      },
-      "machiene": [
-        {
-          "machineId": 0,
-          "machineName": "Extruder AB-100",
-          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-        },
-        {
-          "machineId": 1,
-          "machineName": "Machience 2",
-          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-        },
-        {
-          "machineId": 2,
-          "machineName": "Machience 2",
-          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-        },
-        {
-          "machineId": 3,
-          "machineName": "Machience 2",
-          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-        }
-      ]
-    },
-    {
-      "factoryId": 1,
-      "factoryName": "Number 2",
-      "factoryDescription": "infor later.",
-      "factoryAddress": {
-        "buildingName": "Go bills",
-        "streetLine1": "44",
-        "streetLine2": "3443",
-        "city": "Hamburg",
-        "stateProvince": "NY",
-        "zipPostalCode": "14075",
-        "country": "USA"
-      },
-      "machiene": [
-        {
-          "machineId": 0,
-          "machineName": "Extruder AB-100",
-          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-        },
-        {
-          "machineId": 1,
-          "machineName": "Machience 2",
-          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-        },
-        {
-          "machineId": 2,
-          "machineName": "Machience 2",
-          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-        },
-        {
-          "machineId": 3,
-          "machineName": "Machience 2",
-          "machineDescripti]on": "Extruder with 1,000fpm output capacity"
-        }
-      ]
-    }
-  ],
   "warehouses": [
     {
-      "warehouseId": 0,
+      "id": 0,
       "warehouseName": "Pier 10 Holdings",
       "warehouseDescription": "Key East Coast shipping/receiving location for storing finished product, ready for distribution.",
       "warehouseAddress": {
@@ -86,37 +12,11 @@
         "stateProvince": "string",
         "zipPostalCode": "string",
         "country": "string"
-      },
-      "inventoryItems": [
-        {
-          "warehouseId": 0,
-          "itemId": 0,
-          "itemSKU": 0,
-          "itemQuantity": 0,
-          "itemName": "Waterproof seal",
-          "itemDescription": "For sealing specimens to preserve them"
-        },
-        {
-          "warehouseId": 0,
-          "itemId": 0,
-          "itemSKU": 0,
-          "itemQuantity": 0,
-          "itemName": "Two",
-          "itemDescription": "For sealing specimens to preserve them"
-        },
-        {
-          "warehouseId": 0,
-          "itemId": 0,
-          "itemSKU": 0,
-          "itemQuantity": 0,
-          "itemName": "Three",
-          "itemDescription": "For sealing specimens to preserve them"
-        }
-      ]
+      }
     },
     {
-      "warehouseId": 1,
-      "warehouseName": "Number 2",
+      "id": 1,
+      "warehouseName": "The Other",
       "warehouseDescription": "Key East Coast shipping/receiving location for storing finished product, ready for distribution.",
       "warehouseAddress": {
         "buildingName": "string",
@@ -126,69 +26,49 @@
         "stateProvince": "string",
         "zipPostalCode": "string",
         "country": "string"
-      },
-      "inventoryItems": [
-        {
-          "warehouseId": 0,
-          "itemId": 0,
-          "itemSKU": 0,
-          "itemQuantity": 0,
-          "itemName": "Waterproof seal",
-          "itemDescription": "For sealing specimens to preserve them"
-        },
-        {
-          "warehouseId": 0,
-          "itemId": 0,
-          "itemSKU": 0,
-          "itemQuantity": 0,
-          "itemName": "Two",
-          "itemDescription": "For sealing specimens to preserve them"
-        },
-        {
-          "warehouseId": 0,
-          "itemId": 0,
-          "itemSKU": 0,
-          "itemQuantity": 0,
-          "itemName": "Three",
-          "itemDescription": "For sealing specimens to preserve them"
-        }
-      ]
+      }
     }
   ],
   "inventoryItems": [
     {
-      "id": 1,
-      "itemSKU": "dd",
-      "itemQuantity": "111",
-      "itemName": "Josh Babcock",
-      "itemDescription": "wwqasf"
-    },
-    {
-      "id": 2,
-      "itemSKU": "ff",
-      "itemName": "changing",
-      "itemDescription": "ff"
-    },
-    {
-      "id": 3,
-      "itemSKU": "111",
-      "itemQuantity": "333",
-      "itemName": "Go bills",
-      "itemDescription": "Please work"
-    },
-    {
       "id": 5,
+      "warehouseId": 0,
+      "itemSKU": "444",
+      "itemQuantity": "5555",
+      "itemName": "Josh",
+      "itemDescription": "hiii"
+    },
+    {
       "itemSKU": "222",
       "itemQuantity": "eee",
-      "itemName": "Josh Babcock",
-      "itemDescription": "go bills"
+      "itemName": "Josh test",
+      "itemDescription": "ff",
+      "warehouseId": "1",
+      "id": 13
     },
     {
-      "id": 6,
-      "itemSKU": "go ",
-      "itemQuantity": "gd",
-      "itemName": "Josh Babcock",
-      "itemDescription": "asd"
+      "itemSKU": "222",
+      "itemQuantity": "333",
+      "itemName": "narrow",
+      "itemDescription": "tw",
+      "warehouseId": "0",
+      "id": 14
+    },
+    {
+      "itemSKU": "222",
+      "itemQuantity": "111",
+      "itemName": "Caleb",
+      "itemDescription": "uuu",
+      "warehouseId": "1",
+      "id": 15
+    },
+    {
+      "itemSKU": "222",
+      "itemQuantity": "eee",
+      "itemName": "Caleb",
+      "itemDescription": "uu",
+      "warehouseId": "0",
+      "id": 16
     }
   ]
 }

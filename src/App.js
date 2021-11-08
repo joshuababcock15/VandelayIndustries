@@ -4,7 +4,9 @@ import {
   Switch,
   Route,
   useHistory,
+  useParams,
 } from 'react-router-dom';
+import { report } from 'process';
 import Home from './pages/Home';
 import Factories from './pages/Factories';
 import Warehouses from './pages/Warehouses';
@@ -19,7 +21,7 @@ import NewInventory from './pages/NewInventory';
 import PostItem from './pages/PostItem';
 
 const App = () => {
-  const [factoryData, setFactoryData] = useState([]);
+  //   const [factoryData, setFactoryData] = useState([]);
   const [warehouseData, setWarehouseData] = useState([]);
   const [inventoryData, setInventoryData] = useState([]);
   const [newSKU, setNewSKU] = useState('');
@@ -28,30 +30,32 @@ const App = () => {
   const [newDescription, setNewDescription] = useState('');
   const [editSKU, setEditSKU] = useState('');
   const [editQuantity, setEditQuantity] = useState('');
-  const [editName, setEditName] = useState(newName);
+  const [editName, setEditName] = useState('');
   const [editDescription, setEditDescription] = useState('');
+  //   const { warehouseId } = useParams();
 
+  //   console.log(warehouseId);
   const history = useHistory();
 
-  useEffect(() => {
-    const fetchFactory = async () => {
-      try {
-        const response = await api.get('./factories');
-        // console.log(response)
-        setFactoryData(response.data);
-      } catch (err) {
-        if (err.response) {
-          // not in the 200 response range
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error: ${err.message}`);
-        }
-      }
-    };
-    fetchFactory();
-  }, []);
+  //   useEffect(() => {
+  //     const fetchFactory = async () => {
+  //       try {
+  //         const response = await api.get('./factories');
+  //         // console.log(response)
+  //         setFactoryData(response.data);
+  //       } catch (err) {
+  //         if (err.response) {
+  //           // not in the 200 response rangeπ
+  //           console.log(err.response.data);
+  //           console.log(err.response.status);
+  //           console.log(err.response.headers);
+  //         } else {
+  //           console.log(`Error: ${err.message}`);
+  //         }
+  //       }
+  //     };
+  //     fetchFactory();
+  //   }, []);
 
   useEffect(() => {
     const fetchWarehouse = async () => {
@@ -93,55 +97,28 @@ const App = () => {
     fetchInventory();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const id = inventoryData.length
-      ? inventoryData[inventoryData.length - 1].id + 1
-      : 1;
-
-    console.log(id);
-    const newInventory = {
-      id,
-      itemSKU: newSKU,
-      itemQuantity: newQuantity,
-      itemName: newName,
-      itemDescription: newDescription,
-    };
-    try {
-      const response = await api.post('/inventoryItems', newInventory);
-      const allInventory = [...inventoryData, response.inventoryData];
-      setInventoryData(allInventory);
-      setNewSKU('');
-      setNewQuantity('');
-      setNewName('');
-      setNewDescription('');
-      //   history.push('/inventory');
-      // fix this
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    }
-  };
-
-  const handleEdit = async (id) => {
+  console.log(editName);
+  const handleEdit = async (inventoryItemId) => {
     const updateInventory = {
-      id,
-      itemSKU: editSKU,
-      itemQuantity: editQuantity,
-      itemName: editName,
-      itemDescription: editDescription,
+      id: 5,
+      warehouseId: 0,
+      itemSKU: '444',
+      itemQuantity: '5555',
+      itemName: 'Josh',
+      itemDescription: 'hiii',
     };
     try {
-      const response = await api.put(`/inventoryItems/${id}`, updateInventory);
+      const response = await api.put(`/inventoryItems/5`, updateInventory);
       setInventoryData(
         inventoryData.map((item) =>
-          item.id === id ? { ...response.data } : item
+          item.id === inventoryItemId ? { ...response.data } : item
         )
       );
       setEditSKU('');
       setEditQuantity('');
       setEditName('');
       setEditDescription('');
-      //   history.push('/inventory');
+      //   history.push('/');
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -152,7 +129,7 @@ const App = () => {
       await api.delete(`/inventoryItems/${id}`);
       const inventoryList = inventoryData.filter((item) => item.id !== id);
       setInventoryData(inventoryList);
-      //   history.push('/');
+      history.push('/inventory');
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -163,15 +140,29 @@ const App = () => {
       <Header />
       <Router>
         <Switch>
-          <Route exact path="/warehouses/:warehouseId/inventory-items">
+          <Route exact path="/inventoryItems/:inventoryItemId">
+            <EditInventory
+              inventoryData={inventoryData}
+              editSKU={editSKU}
+              setEditSKU={setEditSKU}
+              editQuantity={editQuantity}
+              setEditQuantity={setEditQuantity}
+              editName={editName}
+              setEditName={setEditName}
+              editDescription={editDescription}
+              setEditDescription={setEditDescription}
+              handleEdit={handleEdit}
+            />
+          </Route>
+          <Route exact path="/warehouses/:warehouseId/inventoryItems">
             <Inventory data={warehouseData} />
           </Route>
-          <Route exact path="/factories/:factories/machienes">
+          {/* <Route exact path="/factories/:factories/machienes">
             <Machiene data={factoryData} />
           </Route>
           <Route exact path="/factories/:factoryId">
             <Factory data={factoryData} />
-          </Route>
+          </Route> */}
           <Route exact path="/warehouses/:warehouseId">
             <Warehouse data={warehouseData} />
           </Route>
@@ -184,7 +175,6 @@ const App = () => {
           <Route exact path="/newInventory">
             <NewInventory
               data={inventoryData}
-              handleSubmit={handleSubmit}
               newSKU={newSKU}
               setNewSKU={setNewSKU}
               newQuantity={newQuantity}
@@ -195,31 +185,18 @@ const App = () => {
               setNewDescription={setNewDescription}
             />
           </Route>
-          <Route exact path="/edit/:id">
-            <EditInventory
-              inventoryData={inventoryData}
-              handleEdit={handleEdit}
-              setEditSKU={setEditSKU}
-              editSKU={editSKU}
-              setEditQuantity={setEditQuantity}
-              setEditName={setEditName}
-              editName={editName}
-              setEditDescription={setEditDescription}
-              editDescription={editDescription}
-            />
-          </Route>
-          <Route exact path="/inventory/:id">
+          <Route exact path="/edit">
             <PostItem
               inventoryData={inventoryData}
-              handleDelete={handleDelete}
+              //   handleDelete={handleDelete}
             />
           </Route>
-          <Route exact path="/inventory">
+          {/* <Route exact path="/inventory">
             <Inventory data={inventoryData} />
-          </Route>
-          <Route exact path="/factories">
+          </Route> */}
+          {/* <Route exact path="/factories">
             <Factories data={factoryData} />
-          </Route>
+          </Route> */}
           <Route exact path="/">
             <Home />
           </Route>
