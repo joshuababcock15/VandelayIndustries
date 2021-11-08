@@ -13,7 +13,7 @@ const PostItem = ({ handleDelete, inventoryData }) => {
   return (
     <div>
       <h1>Item!</h1>
-      <Link to={`/edit/${item.id}`}>
+      <Link to={`/inventoryItems/${item.id}`}>
         <Button>Edit</Button>
       </Link>
       <Button className="deleteButton" onClick={() => handleDelete(item.id)}>
