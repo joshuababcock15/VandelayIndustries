@@ -7,7 +7,7 @@ const Logo = styled.h1`
   margin-left: 2rem;
   position: relative;
   z-index: 2;
-  background: blue;
+  background: #7a918d;
   transform: skew(-7deg);
   a {
     color: white;
@@ -18,14 +18,18 @@ const Logo = styled.h1`
 `;
 
 const HeaderStyles = styled.header`
-  border-bottom: 10px solid var(--black, black);
-  background-color: yellow;
+  border-bottom: 10px solid #7a918d;
+  background-color: #99c2a2;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 40px 16px;
+`;
+
+const StyledNavLink = styled(NavLink)`
+  color: white;
 `;
 
 export default function Header() {
@@ -37,13 +41,13 @@ export default function Header() {
         </Logo>
         <Nav>
           <NavItem>
-            <NavLink href="/">About</NavLink>
+            <StyledNavLink href="/">About</StyledNavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/factories">Factories</NavLink>
+            <StyledNavLink href="/factories">Factories</StyledNavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/warehouses">warehouses</NavLink>
+            <StyledNavLink href="/warehouses">Warehouses</StyledNavLink>
           </NavItem>
         </Nav>
       </Wrapper>

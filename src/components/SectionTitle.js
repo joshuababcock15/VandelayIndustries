@@ -12,7 +12,7 @@ const defaultProps = {
 
 const Title = styled.h2`
   font-size: 4rem;
-  color: white;
+  color: black;
 `;
 
 const TitleWrapper = styled.div`
@@ -23,7 +23,7 @@ const TitleWrapper = styled.div`
 const Container = styled.div`
   width: 100%;
   display: flex;
-  background-color: purple;
+  background-color: #dbfeb8;
 `;
 
 export default function SectionTitle(props) {

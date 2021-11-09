@@ -24,7 +24,7 @@ const CardWrapper = styled.div`
 `;
 
 const Link = styled.a`
-  color: white;
+  color: black;
 `;
 
 const ContentWrapper = styled.div`
@@ -47,7 +47,7 @@ const CardFactory = (props) => {
 
   return (
     <CardWrapper>
-      <Card color="primary">
+      <Card color="light">
         <ContentWrapper>
           <CardBody>
             <CardTitle tag="h5">{name}</CardTitle>

@@ -23,7 +23,7 @@ const TitleWrapper = styled.div`
 const Container = styled.div`
   width: 100%;
   display: flex;
-  background-color: beige;
+  background-color: #93b1a7;
   position: absolute;
 `;
 
