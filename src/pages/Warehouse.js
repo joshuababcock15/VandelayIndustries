@@ -23,8 +23,6 @@ const Warehouse = (props) => {
     setOpen(open);
   }, [open]);
 
-  // make modal a reuseable component
-
   const CarouselWrapper = styled.div`
     padding: 40px;
   `;
@@ -32,7 +30,6 @@ const Warehouse = (props) => {
   const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
   `;
 
   const WarehouseContent = styled.div`

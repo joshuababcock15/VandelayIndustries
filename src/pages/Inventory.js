@@ -93,32 +93,6 @@ const Inventory = () => {
             }
           };
 
-          const handleEdit = async () => {
-            const updateInventory = {
-              itemSKU: newSKU,
-              itemQuantity: newQuantity,
-              itemName: newName,
-              itemDescription: newDescription,
-            };
-            try {
-              const response = await api.put(
-                `invertoryItems/${items?.id}`,
-                updateInventory
-              );
-              setInvertory(
-                invertory.map((item) =>
-                  item.id === items?.id ? { ...response.data } : item
-                )
-              );
-              setNewSKU('');
-              setNewQuantity('');
-              setNewName('');
-              setNewDescription('');
-            } catch (err) {
-              console.log(`Error: ${err.message}`);
-            }
-          };
-
           return (
             <tbody key={index}>
               <tr>

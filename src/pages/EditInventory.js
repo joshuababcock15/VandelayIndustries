@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Button, Input, Form, FormGroup, Label } from 'reactstrap';
 import api from '../api/factories';
 
@@ -17,12 +17,13 @@ const EditInventory = ({ inventoryData }) => {
   const invertoryItem = inventoryData.filter(
     (item) => item.id.toString() === inventoryItemId
   );
+
+  // could be find
   const [inventory, setInvertory] = useState('');
   const [editSKU, setEditSKU] = useState('');
   const [editQuantity, setEditQuantity] = useState('');
   const [editName, setEditName] = useState('');
   const [editDescription, setEditDescription] = useState('');
-  const [inventoryItem, setInventoryItem] = useState({});
 
   useEffect(() => {
     console.log('fire');
@@ -87,19 +88,6 @@ const EditInventory = ({ inventoryData }) => {
       console.log(`Error: ${err.message}`);
     }
   };
-
-  //   const handleDelete = async () => {
-  //     try {
-  //       await api.delete(`inventoryItems/${inventoryItemId}`);
-  //       const inventoryList = invertoryItem[0].filter(
-  //         (item) => item.id !== inventoryItemId
-  //       );
-  //       setInvertory(inventoryList);
-  //       //   history.push(`/warehouses/0/invertoryItems`);
-  //     } catch (err) {
-  //       console.log(`Error: ${err.message}`);
-  //     }
-  //   };
 
   return (
     <PageWrapper>
