@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { Button, CardGroup } from 'reactstrap';
+import { CardGroup } from 'reactstrap';
 import CardFactory from '../components/CardFactory';
 import SectionTitle from '../components/SectionTitle';
-import CardImage from '../components/CardImage';
-import { CardsData } from '../data/homeData';
 
-const cardData = CardsData.data;
 const propTypes = {
   data: PropTypes.array,
 };
