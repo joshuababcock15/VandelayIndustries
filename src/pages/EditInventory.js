@@ -17,34 +17,27 @@ const EditInventory = ({ inventoryData }) => {
   const invertoryItem = inventoryData.filter(
     (item) => item.id.toString() === inventoryItemId
   );
-
-  const [inventory, setInvertory] = useState(inventoryData);
-  const [editSKU, setEditSKU] = useState(invertoryItem[0]?.itemSKU);
-  const [editQuantity, setEditQuantity] = useState(
-    invertoryItem[0]?.itemQuantity
-  );
-  const [editName, setEditName] = useState(invertoryItem[0]?.itemName);
-  const [editDescription, setEditDescription] = useState(
-    invertoryItem[0]?.itemDescription
-  );
+  const [inventory, setInvertory] = useState('');
+  const [editSKU, setEditSKU] = useState('');
+  const [editQuantity, setEditQuantity] = useState('');
+  const [editName, setEditName] = useState('');
+  const [editDescription, setEditDescription] = useState('');
+  const [inventoryItem, setInventoryItem] = useState({});
 
   useEffect(() => {
-    if (invertoryItem) {
+    console.log('fire');
+    if (inventoryItemId) {
       setEditSKU(invertoryItem[0]?.itemSKU);
       setEditQuantity(invertoryItem[0]?.itemQuantity);
       setEditName(invertoryItem[0]?.itemName);
       setEditDescription(invertoryItem[0]?.itemDescription);
     }
-  }, [
-    invertoryItem,
-    setEditSKU,
-    setEditQuantity,
-    setEditName,
-    setEditDescription,
-  ]);
+  }, [inventoryItemId]);
 
   const history = useHistory();
-
+  useEffect(() => {
+    console.log(editName);
+  }, [editName]);
   useEffect(() => {
     const fetchInventory = async () => {
       try {
@@ -72,7 +65,7 @@ const EditInventory = ({ inventoryData }) => {
       itemName: editName,
       itemDescription: editDescription,
     };
-
+    console.log('updateInventory', updateInventory);
     try {
       const response = await api.put(
         `inventoryItems/${inventoryItemId}`,
@@ -120,7 +113,10 @@ const EditInventory = ({ inventoryData }) => {
             type="text"
             required
             defaultValue={editName}
-            onChange={(e) => setEditName(e.target.value)}
+            onChange={(e) => {
+              console.log(e);
+              setEditName(e.target.value);
+            }}
           />
         </FormGroup>
         <FormGroup>
