@@ -2,41 +2,38 @@
 // add prop types lateer
 
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { Button, Input, Form, FormGroup, Label } from 'reactstrap';
 import api from '../api/factories';
 
-const EditInventory = ({
-  inventoryData,
-  handleEdit,
-  //   editSKU,
-  //   setEditSKU,
-  //   editQuantity,
-  //   setEditQuantity,
-  //   editName,
-  //   setEditName,
-  //   editDescription,
-  //   setEditDescription,
-}) => {
-  const { warehouseId, inventoryItemId } = useParams();
+const PageWrapper = styled.div`
+  padding: 40px;
+`;
+
+const EditInventory = ({ inventoryData }) => {
+  const { inventoryItemId } = useParams();
+
   const invertoryItem = inventoryData.filter(
     (item) => item.id.toString() === inventoryItemId
   );
 
-  const [inventory, setInvertory] = useState();
-  const [editSKU, setEditSKU] = useState(inventory?.itemSKU);
-  const [editQuantity, setEditQuantity] = useState(inventory?.itemQuantity);
+  const [inventory, setInvertory] = useState(inventoryData);
+  const [editSKU, setEditSKU] = useState(invertoryItem[0]?.itemSKU);
+  const [editQuantity, setEditQuantity] = useState(
+    invertoryItem[0]?.itemQuantity
+  );
   const [editName, setEditName] = useState(invertoryItem[0]?.itemName);
   const [editDescription, setEditDescription] = useState(
-    inventory?.itemDescription
+    invertoryItem[0]?.itemDescription
   );
 
   useEffect(() => {
     if (invertoryItem) {
-      setEditSKU(invertoryItem?.itemSKU);
-      setEditQuantity(invertoryItem?.itemQuantity);
-      setEditName(invertoryItem?.itemName);
-      setEditDescription(invertoryItem?.itemDescription);
+      setEditSKU(invertoryItem[0]?.itemSKU);
+      setEditQuantity(invertoryItem[0]?.itemQuantity);
+      setEditName(invertoryItem[0]?.itemName);
+      setEditDescription(invertoryItem[0]?.itemDescription);
     }
   }, [
     invertoryItem,
@@ -67,35 +64,36 @@ const EditInventory = ({
     fetchInventory();
   }, [inventoryItemId]);
 
-  //   const handleEdit = async (id) => {
-  //     const updateInventory = {
-  //       id,
-  //       warehouseId: 1,
-  //       itemSKU: editSKU,
-  //       itemQuantity: editQuantity,
-  //       itemName: editName,
-  //       itemDescription: editDescription,
-  //     };
-  //     try {
-  //       const response = await api.put(
-  //         `invertoryItems/${inventoryItemId}`,
-  //         updateInventory
-  //       );
-  //       console.log(response);
-  //       setInvertory(
-  //         invertoryItem[0].map((item) =>
-  //           item.id === inventoryItemId ? { ...response.data } : item
-  //         )
-  //       );
-  //       setEditSKU('');
-  //       setEditQuantity('');
-  //       setEditName('');
-  //       setEditDescription('');
-  //       history.push(`/warehouses/${warehouseId}/invertoryItems`);
-  //     } catch (err) {
-  //       console.log(`Error: ${err.message}`);
-  //     }
-  //   };
+  const handleEdit = async () => {
+    const updateInventory = {
+      warehouseId: parseInt(invertoryItem[0]?.warehouseId),
+      itemSKU: editSKU,
+      itemQuantity: editQuantity,
+      itemName: editName,
+      itemDescription: editDescription,
+    };
+
+    try {
+      const response = await api.put(
+        `inventoryItems/${inventoryItemId}`,
+        updateInventory
+      );
+      setInvertory(
+        invertoryItem.map((item) =>
+          item.id === inventoryItemId ? { ...response.data } : item
+        )
+      );
+      setEditSKU('');
+      setEditQuantity('');
+      setEditName('');
+      setEditDescription('');
+      history.push(
+        `/warehouses/${invertoryItem[0]?.warehouseId}/inventoryItems`
+      );
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
 
   //   const handleDelete = async () => {
   //     try {
@@ -111,15 +109,7 @@ const EditInventory = ({
   //   };
 
   return (
-    <div>
-      {/* <Link to="/warehouses/0/inventoryItems">
-        <Button
-          className="deleteButton"
-          onClick={() => handleDelete(invertoryItem[0]?.id)}
-        >
-          Delete
-        </Button>
-      </Link> */}
+    <PageWrapper>
       <h1>Edit Inventory!</h1>
       <Form onSubmit={(e) => e.preventDefault()}>
         <FormGroup>
@@ -128,9 +118,8 @@ const EditInventory = ({
             id="name"
             name="name"
             type="text"
-            placeholder="hi"
             required
-            value={editName}
+            defaultValue={editName}
             onChange={(e) => setEditName(e.target.value)}
           />
         </FormGroup>
@@ -141,7 +130,7 @@ const EditInventory = ({
             name="SKU"
             type="text"
             required
-            value={editSKU}
+            defaultValue={editSKU}
             onChange={(e) => setEditSKU(e.target.value)}
           />
         </FormGroup>
@@ -152,7 +141,7 @@ const EditInventory = ({
             name="quantity"
             type="text"
             required
-            value={editQuantity}
+            defaultValue={editQuantity}
             onChange={(e) => setEditQuantity(e.target.value)}
           />
         </FormGroup>
@@ -162,22 +151,20 @@ const EditInventory = ({
             id="exampleText"
             name="text"
             type="textarea"
-            value={editDescription}
+            defaultValue={editDescription}
             onChange={(e) => setEditDescription(e.target.value)}
           />
         </FormGroup>
-        <Link to="/warehouses/0/invertoryItems">
-          <Button type="submit" onClick={() => handleEdit(invertoryItem?.id)}>
-            Submit
-          </Button>
-        </Link>
+        <Button type="submit" onClick={() => handleEdit(invertoryItem[0]?.id)}>
+          Submit
+        </Button>
       </Form>
       {/* {!editName && (
         <>
           <h2>Post Not Found</h2>
         </>
       )} */}
-    </div>
+    </PageWrapper>
   );
 };
 export default EditInventory;

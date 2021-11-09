@@ -4,9 +4,8 @@ import {
   Switch,
   Route,
   useHistory,
-  useParams,
 } from 'react-router-dom';
-import { report } from 'process';
+import styled from 'styled-components';
 import Home from './pages/Home';
 import Factories from './pages/Factories';
 import Warehouses from './pages/Warehouses';
@@ -15,10 +14,15 @@ import Warehouse from './pages/Warehouse';
 import Inventory from './pages/Inventory';
 import api from './api/factories';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Machiene from './pages/Machiene';
 import EditInventory from './pages/EditInventory';
 import NewInventory from './pages/NewInventory';
 import PostItem from './pages/PostItem';
+
+const Content = styled.div`
+  position: relative;
+`;
 
 const App = () => {
   //   const [factoryData, setFactoryData] = useState([]);
@@ -100,15 +104,15 @@ const App = () => {
   console.log(editName);
   const handleEdit = async (inventoryItemId) => {
     const updateInventory = {
-      id: 5,
+      id: 15,
       warehouseId: 0,
       itemSKU: '444',
       itemQuantity: '5555',
-      itemName: 'Josh',
+      itemName: 'Test',
       itemDescription: 'hiii',
     };
     try {
-      const response = await api.put(`/inventoryItems/5`, updateInventory);
+      const response = await api.put(`/inventoryItems/15`, updateInventory);
       setInventoryData(
         inventoryData.map((item) =>
           item.id === inventoryItemId ? { ...response.data } : item
@@ -118,7 +122,7 @@ const App = () => {
       setEditQuantity('');
       setEditName('');
       setEditDescription('');
-      //   history.push('/');
+      history.push('/');
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -136,72 +140,75 @@ const App = () => {
   };
 
   return (
-    <div className="App container">
+    <div>
       <Header />
-      <Router>
-        <Switch>
-          <Route exact path="/inventoryItems/:inventoryItemId">
-            <EditInventory
-              inventoryData={inventoryData}
-              editSKU={editSKU}
-              setEditSKU={setEditSKU}
-              editQuantity={editQuantity}
-              setEditQuantity={setEditQuantity}
-              editName={editName}
-              setEditName={setEditName}
-              editDescription={editDescription}
-              setEditDescription={setEditDescription}
-              handleEdit={handleEdit}
-            />
-          </Route>
-          <Route exact path="/warehouses/:warehouseId/inventoryItems">
-            <Inventory data={warehouseData} />
-          </Route>
-          {/* <Route exact path="/factories/:factories/machienes">
+      <Content>
+        <Router>
+          <Switch>
+            <Route exact path="/inventoryItems/:inventoryItemId">
+              <EditInventory
+                inventoryData={inventoryData}
+                editSKU={editSKU}
+                setEditSKU={setEditSKU}
+                editQuantity={editQuantity}
+                setEditQuantity={setEditQuantity}
+                editName={editName}
+                setEditName={setEditName}
+                editDescription={editDescription}
+                setEditDescription={setEditDescription}
+                handleEdit={handleEdit}
+              />
+            </Route>
+            <Route exact path="/warehouses/:warehouseId/inventoryItems">
+              <Inventory data={warehouseData} />
+            </Route>
+            {/* <Route exact path="/factories/:factories/machienes">
             <Machiene data={factoryData} />
           </Route>
           <Route exact path="/factories/:factoryId">
             <Factory data={factoryData} />
           </Route> */}
-          <Route exact path="/warehouses/:warehouseId">
-            <Warehouse data={warehouseData} />
-          </Route>
-          <Route exact path="/warehouses">
-            <Warehouses data={warehouseData} />
-          </Route>
-          {/* <Route exact path="/inventory/:invertoryId">
+            <Route exact path="/warehouses/:warehouseId">
+              <Warehouse data={warehouseData} />
+            </Route>
+            <Route exact path="/warehouses">
+              <Warehouses data={warehouseData} />
+            </Route>
+            {/* <Route exact path="/inventory/:invertoryId">
             <Inventory data={inventoryData} />
           </Route> */}
-          <Route exact path="/newInventory">
-            <NewInventory
-              data={inventoryData}
-              newSKU={newSKU}
-              setNewSKU={setNewSKU}
-              newQuantity={newQuantity}
-              setNewQuantity={setNewQuantity}
-              newName={newName}
-              setNewName={setNewName}
-              newDescription={newDescription}
-              setNewDescription={setNewDescription}
-            />
-          </Route>
-          <Route exact path="/edit">
-            <PostItem
-              inventoryData={inventoryData}
-              //   handleDelete={handleDelete}
-            />
-          </Route>
-          {/* <Route exact path="/inventory">
+            <Route exact path="/newInventory">
+              <NewInventory
+                data={inventoryData}
+                newSKU={newSKU}
+                setNewSKU={setNewSKU}
+                newQuantity={newQuantity}
+                setNewQuantity={setNewQuantity}
+                newName={newName}
+                setNewName={setNewName}
+                newDescription={newDescription}
+                setNewDescription={setNewDescription}
+              />
+            </Route>
+            <Route exact path="/edit">
+              <PostItem
+                inventoryData={inventoryData}
+                //   handleDelete={handleDelete}
+              />
+            </Route>
+            {/* <Route exact path="/inventory">
             <Inventory data={inventoryData} />
           </Route> */}
-          {/* <Route exact path="/factories">
+            {/* <Route exact path="/factories">
             <Factories data={factoryData} />
           </Route> */}
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </Content>
+      <Footer />
     </div>
   );
 };
