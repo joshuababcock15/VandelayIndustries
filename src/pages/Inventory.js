@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-// import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useParams, Link, useHistory } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import {
   Table,
   Button,
@@ -17,10 +15,6 @@ import {
   ModalHeader,
 } from 'reactstrap';
 import api from '../api/factories';
-
-// const propTypes = {
-//   //   data: PropTypes.array,
-// };
 
 const PageWrapper = styled.div`
   padding: 0 40px;
@@ -63,7 +57,6 @@ const Inventory = () => {
         setInvertory(response.data);
       } catch (err) {
         if (err.response) {
-          // not in the 200 response range
           console.log(err.response.data);
           console.log(err.response.status);
           console.log(err.response.headers);

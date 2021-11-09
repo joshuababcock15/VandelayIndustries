@@ -13,7 +13,7 @@ const propTypes = {
 
 const defaultProps = {
   title: 'Vandley Industries',
-  subtitle: 'subtitle',
+  subtitle: '',
 };
 
 export default function CardImage(props) {
@@ -29,7 +29,6 @@ export default function CardImage(props) {
       </CardBody>
     </Card>
   );
-  //   const {} = props;
 }
 
 CardImage.propTypes = propTypes;

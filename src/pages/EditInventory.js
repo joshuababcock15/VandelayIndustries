@@ -1,11 +1,13 @@
-/* eslint-disable react/prop-types */
-// add prop types lateer
-
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
 import { Button, Input, Form, FormGroup, Label } from 'reactstrap';
 import api from '../api/factories';
+
+const propTypes = {
+  inventoryData: PropTypes.array,
+};
 
 const PageWrapper = styled.div`
   padding: 40px;
@@ -26,13 +28,13 @@ const EditInventory = ({ inventoryData }) => {
   const [editDescription, setEditDescription] = useState('');
 
   useEffect(() => {
-    console.log('fire');
     if (inventoryItemId) {
       setEditSKU(invertoryItem[0]?.itemSKU);
       setEditQuantity(invertoryItem[0]?.itemQuantity);
       setEditName(invertoryItem[0]?.itemName);
       setEditDescription(invertoryItem[0]?.itemDescription);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inventoryItemId]);
 
   const history = useHistory();
@@ -151,4 +153,7 @@ const EditInventory = ({ inventoryData }) => {
     </PageWrapper>
   );
 };
+
+EditInventory.propTypes = propTypes;
+
 export default EditInventory;

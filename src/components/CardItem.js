@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// s
 import {
   CardBody,
   Button,
@@ -38,7 +37,7 @@ const CardItem = (props) => {
   </div>;
 };
 
-Card.propTypes = propTypes;
-Card.defaultProps = defaultProps;
+CardItem.propTypes = propTypes;
+CardItem.defaultProps = defaultProps;
 
-export default Card;
+export default CardItem;

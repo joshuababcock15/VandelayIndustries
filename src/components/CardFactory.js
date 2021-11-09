@@ -56,19 +56,10 @@ const CardFactory = (props) => {
               {buildingName}
             </CardSubtitle>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {city}
+              {streetLine} {zipcode}
             </CardSubtitle>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {country}
-            </CardSubtitle>
-            <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {state}
-            </CardSubtitle>
-            <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {streetLine}
-            </CardSubtitle>
-            <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {zipcode}
+              {city} {country} {state}
             </CardSubtitle>
             <Link href={linkRef}>{link}</Link>
           </CardBody>
