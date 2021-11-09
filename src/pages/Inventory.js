@@ -12,6 +12,10 @@ import {
   Form,
   FormGroup,
   Label,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
 } from 'reactstrap';
 import api from '../api/factories';
 
@@ -23,6 +27,7 @@ const Inventory = () => {
   const { warehouseId } = useParams();
   const [invertory, setInvertory] = useState();
   const [open, setOpen] = useState(false);
+  const [modal, setModal] = useState(false);
   const [newSKU, setNewSKU] = useState('');
   const [newQuantity, setNewQuantity] = useState('');
   const [newName, setNewName] = useState('');
@@ -30,6 +35,8 @@ const Inventory = () => {
 
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
+  const modalClose = () => setModal(false);
+  const modalOpen = () => setModal(true);
   const history = useHistory();
 
   useEffect(() => {
@@ -65,6 +72,7 @@ const Inventory = () => {
                 (item) => item.id !== items?.id
               );
               setInvertory(inventoryList);
+              modalClose();
             } catch (err) {
               console.log(`Error: ${err.message}`);
             }
@@ -111,9 +119,22 @@ const Inventory = () => {
                         <Badge color="primary">Edit</Badge>
                       </Link>
                     </div>
-                    <Button color="primary" onClick={handleDelete}>
-                      Delete
-                    </Button>
+                    <div>
+                      <Button color="primary" onClick={modalOpen}>
+                        Delete
+                      </Button>
+                      <Modal toggle={modalClose} isOpen={modal}>
+                        <ModalHeader toggle={modalClose} isOpen={modal}>
+                          Are you sure you want to delete this item?
+                        </ModalHeader>
+                        <ModalFooter>
+                          <Button color="primary" onClick={handleDelete}>
+                            Delete
+                          </Button>{' '}
+                          <Button onClick={modalClose}>Cancel</Button>
+                        </ModalFooter>
+                      </Modal>
+                    </div>
                   </div>
                 </td>
               </tr>
