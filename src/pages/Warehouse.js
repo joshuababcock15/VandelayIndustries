@@ -6,6 +6,7 @@ import { Button, UncontrolledCarousel } from 'reactstrap';
 import { ImageData } from '../data/warehouseData';
 
 const imageData = ImageData.data[0];
+const imageDataTwo = ImageData.data[1];
 
 const propTypes = {
   data: PropTypes.array,
@@ -45,17 +46,26 @@ const Warehouse = (props) => {
           {
             altText: 'Slide 1',
             key: 1,
-            src: imageData?.imageSrc,
+            src:
+              warehouseId === '1'
+                ? imageDataTwo?.imageSrc
+                : imageData?.imageSrc,
           },
           {
             altText: 'Slide 2',
             key: 2,
-            src: imageData?.imageSrcTwo,
+            src:
+              warehouseId === '1'
+                ? imageDataTwo?.imageSrcTwo
+                : imageData?.imageSrcTwo,
           },
           {
             altText: 'Slide 3',
             key: 3,
-            src: imageData?.imageSrcThree,
+            src:
+              warehouseId === '1'
+                ? imageDataTwo?.imageSrcThree
+                : imageData?.imageSrcThree,
           },
         ]}
       />
