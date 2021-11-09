@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import {
   Table,
-  Badge,
   Button,
   Offcanvas,
   Input,
@@ -13,15 +13,31 @@ import {
   FormGroup,
   Label,
   Modal,
-  ModalBody,
   ModalFooter,
   ModalHeader,
 } from 'reactstrap';
 import api from '../api/factories';
 
-const propTypes = {
-  //   data: PropTypes.array,
-};
+// const propTypes = {
+//   //   data: PropTypes.array,
+// };
+
+const PageWrapper = styled.div`
+  padding: 0 40px;
+`;
+
+const FormWrapper = styled.div`
+  padding: 0 20px;
+`;
+
+const StyledButton = styled(Button)`
+  width: 100px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 const Inventory = () => {
   const { warehouseId } = useParams();
@@ -37,7 +53,6 @@ const Inventory = () => {
   const handleOpen = () => setOpen(true);
   const modalClose = () => setModal(false);
   const modalOpen = () => setModal(true);
-  const history = useHistory();
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -113,16 +128,18 @@ const Inventory = () => {
                 <td>{items?.itemQuantity}</td>
                 <td>{items?.itemSKU}</td>
                 <td>
-                  <div>
+                  <ButtonWrapper>
                     <div>
                       <Link to={`/inventoryItems/${items.id}`}>
-                        <Badge color="primary">Edit</Badge>
+                        <StyledButton size="large" color="primary">
+                          Edit
+                        </StyledButton>
                       </Link>
                     </div>
                     <div>
-                      <Button color="primary" onClick={modalOpen}>
+                      <StyledButton color="primary" onClick={modalOpen}>
                         Delete
-                      </Button>
+                      </StyledButton>
                       <Modal toggle={modalClose} isOpen={modal}>
                         <ModalHeader toggle={modalClose} isOpen={modal}>
                           Are you sure you want to delete this item?
@@ -135,7 +152,7 @@ const Inventory = () => {
                         </ModalFooter>
                       </Modal>
                     </div>
-                  </div>
+                  </ButtonWrapper>
                 </td>
               </tr>
             </tbody>
@@ -149,6 +166,7 @@ const Inventory = () => {
     e.preventDefault();
 
     const newInventory = {
+      warehouseId: parseInt(warehouseId),
       itemSKU: newSKU,
       itemQuantity: newQuantity,
       itemName: newName,
@@ -172,7 +190,7 @@ const Inventory = () => {
   };
 
   return (
-    <div>
+    <PageWrapper>
       <h1>Inventory!</h1>
       <div>
         <Button color="primary" onClick={handleOpen} open={open}>
@@ -184,9 +202,10 @@ const Inventory = () => {
           isOpen={open}
           fade={false}
         >
-          <OffcanvasHeader toggle={handleClose}>New Item</OffcanvasHeader>
-          <div>
-            <h1>New Inventory!</h1>
+          <OffcanvasHeader toggle={handleClose}>
+            Enter in the the new item details
+          </OffcanvasHeader>
+          <FormWrapper>
             <Form onSubmit={handleSubmit}>
               <FormGroup>
                 <Label for="name">Name</Label>
@@ -237,10 +256,10 @@ const Inventory = () => {
               </FormGroup>
               <Button>Submit</Button>
             </Form>
-          </div>
+          </FormWrapper>
         </Offcanvas>
       </div>
-      <Table hover bordered>
+      <Table bordered>
         <thead>
           <tr>
             <th>#</th>
@@ -253,7 +272,7 @@ const Inventory = () => {
         </thead>
         {_renderInventory()}
       </Table>
-    </div>
+    </PageWrapper>
   );
 };
 
