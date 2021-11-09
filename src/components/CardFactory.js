@@ -6,31 +6,73 @@ import { CardBody, CardTitle, CardSubtitle, Card, CardText } from 'reactstrap';
 const propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
-  //   quantity: PropTypes.number,
-  //   sku: PropTypes.number,
+  buildingName: PropTypes.string,
+  city: PropTypes.string,
+  country: PropTypes.string,
+  state: PropTypes.string,
+  streetLine: PropTypes.string,
+  zipcode: PropTypes.string,
+  linkRef: PropTypes.string,
+  link: PropTypes.string,
 };
 
 const defaultProps = {};
 
 const CardWrapper = styled.div`
-  width: 50%;
+  width: 100%;
+  padding: 40px;
+`;
+
+const Link = styled.a`
+  color: white;
+`;
+
+const ContentWrapper = styled.div`
+  max-width: 500px;
 `;
 
 const CardFactory = (props) => {
-  const { name, description } = props;
+  const {
+    name,
+    description,
+    buildingName,
+    city,
+    country,
+    state,
+    streetLine,
+    zipcode,
+    linkRef,
+    link,
+  } = props;
+
   return (
     <CardWrapper>
       <Card color="primary">
-        <CardBody>
-          <CardTitle tag="h5">{name}</CardTitle>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
-            {name}
-          </CardSubtitle>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
-            {name}
-          </CardSubtitle>
-          <CardText>{description}</CardText>
-        </CardBody>
+        <ContentWrapper>
+          <CardBody>
+            <CardTitle tag="h5">{name}</CardTitle>
+            <CardText>{description}</CardText>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">
+              {buildingName}
+            </CardSubtitle>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">
+              {city}
+            </CardSubtitle>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">
+              {country}
+            </CardSubtitle>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">
+              {state}
+            </CardSubtitle>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">
+              {streetLine}
+            </CardSubtitle>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">
+              {zipcode}
+            </CardSubtitle>
+            <Link href={linkRef}>{link}</Link>
+          </CardBody>
+        </ContentWrapper>
       </Card>
     </CardWrapper>
   );

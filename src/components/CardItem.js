@@ -7,6 +7,7 @@ import {
   CardTitle,
   CardSubtitle,
   CardText,
+  Card,
 } from 'reactstrap';
 
 const propTypes = {
@@ -18,7 +19,7 @@ const propTypes = {
 
 const defaultProps = {};
 
-const Card = (props) => {
+const CardItem = (props) => {
   const { name, description, quantity, sku } = props;
   <div>
     <Card color="light">

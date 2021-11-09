@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
-import {
-  Button,
-  Offcanvas,
-  Input,
-  OffcanvasHeader,
-  Form,
-  FormGroup,
-  Label,
-} from 'reactstrap';
+import { Button, UncontrolledCarousel } from 'reactstrap';
+import { ImageData } from '../data/warehouseData';
+
+const imageData = ImageData.data[0];
 
 const propTypes = {
   data: PropTypes.array,
@@ -23,62 +19,66 @@ const Warehouse = (props) => {
 
   const [open, setOpen] = useState(false);
 
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
+  useEffect(() => {
+    setOpen(open);
+  }, [open]);
 
   // make modal a reuseable component
 
+  const CarouselWrapper = styled.div`
+    padding: 40px;
+  `;
+
+  const TextWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+  `;
+
+  const WarehouseContent = styled.div`
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  `;
+
+  const _renderCarousel = () => (
+    <CarouselWrapper>
+      <UncontrolledCarousel
+        items={[
+          {
+            altText: 'Slide 1',
+            key: 1,
+            src: imageData?.imageSrc,
+          },
+          {
+            altText: 'Slide 2',
+            key: 2,
+            src: imageData?.imageSrcTwo,
+          },
+          {
+            altText: 'Slide 3',
+            key: 3,
+            src: imageData?.imageSrcThree,
+          },
+        ]}
+      />
+    </CarouselWrapper>
+  );
+
   return (
     <div>
-      <h1>Warehouse {warehouseId}!</h1>
-      <Link to={`/warehouses/${warehouseId}/inventoryItems`}>
-        <Button color="success" size="sm" className="mr-2">
-          Check out the Inventory
-        </Button>
-      </Link>
-      <div>
-        <Button color="primary" onClick={handleOpen} open={open}>
-          Add Inventory Item
-        </Button>
-        <Offcanvas direction="end" toggle={handleClose} isOpen={open}>
-          <OffcanvasHeader toggle={handleClose}>New Item</OffcanvasHeader>
-          <Form>
-            <FormGroup>
-              <Label for="name">Name</Label>
-              <Input
-                id="name"
-                name="name"
-                placeholder="Enter name"
-                type="text"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="SKU">SKU</Label>
-              <Input
-                id="SKU"
-                name="SKU"
-                placeholder="enter SKU number"
-                type="text"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="exampleSelect">Select Quanttity</Label>
-              <Input id="Quanttity" name="select" type="select">
-                <option>100</option>
-                <option>500</option>
-                <option>1000</option>
-                <option>5000</option>
-                <option>10000</option>
-              </Input>
-            </FormGroup>
-            <FormGroup>
-              <Label for="exampleText">Description</Label>
-              <Input id="exampleText" name="text" type="textarea" />
-            </FormGroup>
-            <Button>Submit</Button>
-          </Form>
-        </Offcanvas>
-      </div>
+      <WarehouseContent>
+        <TextWrapper>
+          <h1>{warehouseData?.warehouseName}</h1>
+          <p>Name a latex item and we got it for you!</p>
+          <Link to={`/warehouses/${warehouseId}/inventoryItems`}>
+            <Button color="success" size="sm" className="mr-2">
+              Check out the Inventory
+            </Button>
+          </Link>
+        </TextWrapper>
+      </WarehouseContent>
+      {_renderCarousel()}
     </div>
   );
 };
