@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 
 const Logo = styled.h1`
   font-size: 2rem;
@@ -18,28 +19,34 @@ const Logo = styled.h1`
 
 const HeaderStyles = styled.header`
   border-bottom: 10px solid var(--black, black);
-  display: grid;
-  grid-template-columns: auto 1fr;
+  background-color: yellow;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  padding: 40px 16px;
 `;
 
 export default function Header() {
   return (
     <HeaderStyles>
-      <div>
+      <Wrapper>
         <Logo>
           <a href="/">Vandley Industries</a>
         </Logo>
-        <ul>
-          <li>
-            <a href="/factories">Factories</a>
-          </li>
-          <li>
-            <a href="/warehouses">warehouses</a>
-          </li>
-        </ul>
-      </div>
+        <Nav>
+          <NavItem>
+            <NavLink href="/">About</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/factories">Factories</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/warehouses">warehouses</NavLink>
+          </NavItem>
+        </Nav>
+      </Wrapper>
     </HeaderStyles>
   );
 }
