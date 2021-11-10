@@ -8,6 +8,7 @@ import SectionTitle from '../components/SectionTitle';
 const propTypes = {
   data: PropTypes.array,
 };
+
 const CardWrapper = styled.div`
   display: flex;
   justify-content: center;

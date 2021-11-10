@@ -27,11 +27,9 @@ const App = () => {
     const fetchWarehouse = async () => {
       try {
         const response = await api.get('./warehouses');
-        // console.log(response)
         setWarehouseData(response.data);
       } catch (err) {
         if (err.response) {
-          // not in the 200 response range
           console.log(err.response.data);
           console.log(err.response.status);
           console.log(err.response.headers);
@@ -47,11 +45,9 @@ const App = () => {
     const fetchInventory = async () => {
       try {
         const response = await api.get('./inventoryItems');
-        // console.log(response)
         setInventoryData(response.data);
       } catch (err) {
         if (err.response) {
-          // not in the 200 response range
           console.log(err.response.data);
           console.log(err.response.status);
           console.log(err.response.headers);
@@ -67,11 +63,9 @@ const App = () => {
     const fetchFactory = async () => {
       try {
         const response = await api.get('./factories');
-        // console.log(response)
         setFactoryData(response.data);
       } catch (err) {
         if (err.response) {
-          // not in the 200 response rangeπ
           console.log(err.response.data);
           console.log(err.response.status);
           console.log(err.response.headers);

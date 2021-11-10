@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardAbout Matches snapshot 1`] = `
+<div
+  className="card"
+>
+  <img
+    className="card-img-top"
+    width="100%"
+  />
+  <div
+    className="card-body"
+  >
+    <h5
+      className="card-title"
+    >
+      Vandley Industries
+    </h5>
+    <p
+      className="card-text"
+    >
+      
+    </p>
+    <a />
+  </div>
+</div>
+`;
+
+exports[`CardImage Matches snapshot 1`] = `
+<div
+  className="card"
+>
+  <img
+    className="card-img-top"
+    width="100%"
+  />
+  <div
+    className="card-body"
+  >
+    <h5
+      className="card-title"
+    >
+      Vandley Industries
+    </h5>
+    <p
+      className="card-text"
+    >
+      
+    </p>
+    <a />
+  </div>
+</div>
+`;

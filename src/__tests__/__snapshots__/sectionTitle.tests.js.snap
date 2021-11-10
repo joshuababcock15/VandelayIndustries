@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionTitle Matches snapshot 1`] = `
+<div
+  className="sc-dkPtRN kiASKg"
+>
+  <div
+    className="sc-gsDKAQ fcxmcr"
+  >
+    <h2
+      className="sc-bdvvtL jIAeXh"
+    >
+      This is the Section Title
+    </h2>
+  </div>
+</div>
+`;

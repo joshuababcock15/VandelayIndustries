@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFactory Matches snapshot 1`] = `
+<div
+  className="sc-bdvvtL ctqOxA"
+>
+  <div
+    className="card bg-light"
+  >
+    <div
+      className="sc-dkPtRN jeZswX"
+    >
+      <div
+        className="card-body"
+      >
+        <h5
+          className="card-title"
+        >
+          Newark Latex Mfg.
+        </h5>
+        <p
+          className="card-text"
+        />
+        <h6
+          className="mb-2 text-muted card-subtitle"
+        />
+        <h6
+          className="mb-2 text-muted card-subtitle"
+        >
+           
+        </h6>
+        <h6
+          className="mb-2 text-muted card-subtitle"
+        >
+          , 
+           
+        </h6>
+        <a
+          className="sc-gsDKAQ eSZZXj"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
