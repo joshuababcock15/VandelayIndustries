@@ -1,0 +1,3 @@
+{
+    "/warehouses/:warehouseId/inventoryItems/:id": "/inventoryItems/:id"
+}

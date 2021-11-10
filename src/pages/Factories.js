@@ -18,7 +18,7 @@ const Factories = (props) => {
   const { data } = props;
   return (
     <div>
-      <SectionTitle title=" Want to talk about efficiency.  Our Factories below are the best around." />
+      <SectionTitle title=" Want to talk about efficiency?  Our Factories below are the best around." />
       <CardWrapper>
         {data.map((item, id) => (
           <CardGroup key={id}>
