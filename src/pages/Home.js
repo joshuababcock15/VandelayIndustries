@@ -24,7 +24,7 @@ const _renderCardImage = () => (
 
 const Home = () => (
   <div>
-    <SectionTitle title="Valndley Industries - We don't just import...we import and export!" />
+    <SectionTitle title="Vandelay Industries - We don't just import...we import and export!" />
     {_renderCardImage()}
   </div>
 );

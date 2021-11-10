@@ -10,9 +10,6 @@ import {
   Form,
   FormGroup,
   Label,
-  Modal,
-  ModalFooter,
-  ModalHeader,
 } from 'reactstrap';
 import api from '../api/factories';
 
@@ -25,19 +22,13 @@ const FormWrapper = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-  width: 100px;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
+  margin-bottom: 20px;
 `;
 
 const Inventory = () => {
   const { warehouseId } = useParams();
   const [invertory, setInvertory] = useState();
   const [open, setOpen] = useState(false);
-  const [modal, setModal] = useState(false);
   const [newSKU, setNewSKU] = useState('');
   const [newQuantity, setNewQuantity] = useState('');
   const [newName, setNewName] = useState('');
@@ -45,8 +36,6 @@ const Inventory = () => {
 
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
-  const modalClose = () => setModal(false);
-  const modalOpen = () => setModal(true);
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -72,59 +61,24 @@ const Inventory = () => {
     if (!invertory) return null;
     return (
       <>
-        {invertory.map((items, index) => {
-          const handleDelete = async () => {
-            try {
-              await api.delete(`/inventoryItems/${items?.id}`);
-              const inventoryList = invertory.filter(
-                (item) => item.id !== items?.id
-              );
-              setInvertory(inventoryList);
-              modalClose();
-            } catch (err) {
-              console.log(`Error: ${err.message}`);
-            }
-          };
-
-          return (
-            <tbody key={index}>
-              <tr>
-                <th scope="row">{index + 1}</th>
-                <td>{items?.itemName}</td>
-                <td>{items?.itemDescription}</td>
-                <td>{items?.itemQuantity}</td>
-                <td>{items?.itemSKU}</td>
-                <td>
-                  <ButtonWrapper>
-                    <div>
-                      <Link to={`/inventoryItems/${items.id}`}>
-                        <StyledButton size="large" color="primary">
-                          Edit
-                        </StyledButton>
-                      </Link>
-                    </div>
-                    <div>
-                      <StyledButton color="primary" onClick={modalOpen}>
-                        Delete
-                      </StyledButton>
-                      <Modal toggle={modalClose} isOpen={modal}>
-                        <ModalHeader toggle={modalClose} isOpen={modal}>
-                          Are you sure you want to delete this item?
-                        </ModalHeader>
-                        <ModalFooter>
-                          <Button color="primary" onClick={handleDelete}>
-                            Delete
-                          </Button>{' '}
-                          <Button onClick={modalClose}>Cancel</Button>
-                        </ModalFooter>
-                      </Modal>
-                    </div>
-                  </ButtonWrapper>
-                </td>
-              </tr>
-            </tbody>
-          );
-        })}
+        {invertory.map((items, index) => (
+          <tbody key={index}>
+            <tr>
+              <th scope="row">{index + 1}</th>
+              <td>{items?.itemName}</td>
+              <td>{items?.itemQuantity}</td>
+              <td>{items?.itemSKU}</td>
+              <td>{items?.itemDescription}</td>
+              <td>
+                <Link to={`/inventoryItems/${items.id}`}>
+                  <Button size="large" color="primary">
+                    Edit/Delete
+                  </Button>
+                </Link>
+              </td>
+            </tr>
+          </tbody>
+        ))}
       </>
     );
   };
@@ -158,82 +112,82 @@ const Inventory = () => {
 
   return (
     <PageWrapper>
-      <h1>Inventory!</h1>
+      <h1>Inventory</h1>
       <div>
-        <Button color="primary" onClick={handleOpen} open={open}>
+        <StyledButton color="primary" onClick={handleOpen} open={open}>
           Add Inventory Item
-        </Button>
-        <Offcanvas
-          direction="end"
-          toggle={handleClose}
-          isOpen={open}
-          fade={false}
-        >
-          <OffcanvasHeader toggle={handleClose}>
-            Enter in the the new item details
-          </OffcanvasHeader>
-          <FormWrapper>
-            <Form onSubmit={handleSubmit}>
-              <FormGroup>
-                <Label for="name">Name</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  placeholder="Enter name"
-                  type="text"
-                  required
-                  value={newName}
-                  onChange={(e) => setNewName(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="SKU">SKU</Label>
-                <Input
-                  id="SKU"
-                  name="SKU"
-                  placeholder="enter SKU number"
-                  type="text"
-                  required
-                  value={newSKU}
-                  onChange={(e) => setNewSKU(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="quantity">Select Quanttity</Label>
-                <Input
-                  id="quantity"
-                  name="quantity"
-                  placeholder="enter quantity "
-                  type="text"
-                  required
-                  value={newQuantity}
-                  onChange={(e) => setNewQuantity(e.target.value)}
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label for="exampleText">Description</Label>
-                <Input
-                  id="exampleText"
-                  name="text"
-                  type="textarea"
-                  value={newDescription}
-                  onChange={(e) => setNewDescription(e.target.value)}
-                />
-              </FormGroup>
-              <Button>Submit</Button>
-            </Form>
-          </FormWrapper>
-        </Offcanvas>
+        </StyledButton>
       </div>
+      <Offcanvas
+        direction="end"
+        toggle={handleClose}
+        isOpen={open}
+        fade={false}
+      >
+        <OffcanvasHeader toggle={handleClose}>
+          Enter in the the new item details
+        </OffcanvasHeader>
+        <FormWrapper>
+          <Form onSubmit={handleSubmit}>
+            <FormGroup>
+              <Label for="name">Name</Label>
+              <Input
+                id="name"
+                name="name"
+                placeholder="Enter name"
+                type="text"
+                required
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="SKU">SKU</Label>
+              <Input
+                id="SKU"
+                name="SKU"
+                placeholder="enter SKU number"
+                type="text"
+                required
+                value={newSKU}
+                onChange={(e) => setNewSKU(e.target.value)}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="quantity">Select Quanttity</Label>
+              <Input
+                id="quantity"
+                name="quantity"
+                placeholder="enter quantity "
+                type="text"
+                required
+                value={newQuantity}
+                onChange={(e) => setNewQuantity(e.target.value)}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="exampleText">Description</Label>
+              <Input
+                id="exampleText"
+                name="text"
+                type="textarea"
+                value={newDescription}
+                onChange={(e) => setNewDescription(e.target.value)}
+              />
+            </FormGroup>
+            <Button>Submit</Button>
+          </Form>
+        </FormWrapper>
+      </Offcanvas>
       <Table bordered>
         <thead>
           <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Description</th>
             <th>Quantity</th>
             <th>SKU</th>
+            <th>Description</th>
             <th>Update Item</th>
           </tr>
         </thead>

@@ -37,11 +37,11 @@ export default function Header() {
     <HeaderStyles>
       <Wrapper>
         <Logo>
-          <a href="/">Vandley Industries</a>
+          <a href="/">Vandelay Industries</a>
         </Logo>
         <Nav>
           <NavItem>
-            <StyledNavLink href="/">About</StyledNavLink>
+            <StyledNavLink href="/about">About</StyledNavLink>
           </NavItem>
           <NavItem>
             <StyledNavLink href="/factories">Factories</StyledNavLink>

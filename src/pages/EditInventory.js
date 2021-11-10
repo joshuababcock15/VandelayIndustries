@@ -2,7 +2,16 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
-import { Button, Input, Form, FormGroup, Label } from 'reactstrap';
+import {
+  Button,
+  Input,
+  Form,
+  FormGroup,
+  Label,
+  Modal,
+  ModalFooter,
+  ModalHeader,
+} from 'reactstrap';
 import api from '../api/factories';
 
 const propTypes = {
@@ -13,6 +22,16 @@ const PageWrapper = styled.div`
   padding: 40px;
 `;
 
+const StyledButton = styled(Button)`
+  margin-left: 20px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  width: 200px;
+  justify-content: center;
+`;
+
 const EditInventory = ({ inventoryData }) => {
   const { inventoryItemId } = useParams();
 
@@ -20,12 +39,15 @@ const EditInventory = ({ inventoryData }) => {
     (item) => item.id.toString() === inventoryItemId
   );
 
-  // could be find
+  // eslint-disable-next-line no-unused-vars
   const [inventory, setInvertory] = useState('');
   const [editSKU, setEditSKU] = useState('');
   const [editQuantity, setEditQuantity] = useState('');
   const [editName, setEditName] = useState('');
   const [editDescription, setEditDescription] = useState('');
+  const [modal, setModal] = useState(false);
+  const modalClose = () => setModal(false);
+  const modalOpen = () => setModal(true);
 
   useEffect(() => {
     if (inventoryItemId) {
@@ -38,9 +60,7 @@ const EditInventory = ({ inventoryData }) => {
   }, [inventoryItemId]);
 
   const history = useHistory();
-  useEffect(() => {
-    console.log(editName);
-  }, [editName]);
+
   useEffect(() => {
     const fetchInventory = async () => {
       try {
@@ -68,7 +88,6 @@ const EditInventory = ({ inventoryData }) => {
       itemName: editName,
       itemDescription: editDescription,
     };
-    console.log('updateInventory', updateInventory);
     try {
       const response = await api.put(
         `inventoryItems/${inventoryItemId}`,
@@ -91,6 +110,21 @@ const EditInventory = ({ inventoryData }) => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      await api.delete(`inventoryItems/${inventoryItemId}`);
+      const inventoryList = inventoryData.filter(
+        (item) => item.id !== inventoryItemId
+      );
+      setInvertory(inventoryList);
+      history.push(
+        `/warehouses/${invertoryItem[0]?.warehouseId}/inventoryItems`
+      );
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
+
   return (
     <PageWrapper>
       <h1>Edit Inventory!</h1>
@@ -104,7 +138,6 @@ const EditInventory = ({ inventoryData }) => {
             required
             defaultValue={editName}
             onChange={(e) => {
-              console.log(e);
               setEditName(e.target.value);
             }}
           />
@@ -141,15 +174,29 @@ const EditInventory = ({ inventoryData }) => {
             onChange={(e) => setEditDescription(e.target.value)}
           />
         </FormGroup>
-        <Button type="submit" onClick={() => handleEdit(invertoryItem[0]?.id)}>
-          Submit
-        </Button>
+        <ButtonWrapper>
+          <Button
+            type="submit"
+            onClick={() => handleEdit(invertoryItem[0]?.id)}
+          >
+            Submit
+          </Button>
+          <StyledButton color="danger" onClick={modalOpen}>
+            Delete
+          </StyledButton>
+          <Modal toggle={modalClose} isOpen={modal}>
+            <ModalHeader toggle={modalClose} isOpen={modal}>
+              Are you sure you want to delete this item?
+            </ModalHeader>
+            <ModalFooter>
+              <StyledButton color="danger" onClick={handleDelete}>
+                Delete
+              </StyledButton>{' '}
+              <Button onClick={modalClose}>Cancel</Button>
+            </ModalFooter>
+          </Modal>
+        </ButtonWrapper>
       </Form>
-      {/* {!editName && (
-        <>
-          <h2>Post Not Found</h2>
-        </>
-      )} */}
     </PageWrapper>
   );
 };

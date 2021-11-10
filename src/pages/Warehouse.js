@@ -25,7 +25,7 @@ const Warehouse = (props) => {
   }, [open]);
 
   const CarouselWrapper = styled.div`
-    padding: 40px;
+    padding: 0 40px;
   `;
 
   const TextWrapper = styled.div`
@@ -36,7 +36,9 @@ const Warehouse = (props) => {
   const WarehouseContent = styled.div`
     display: flex;
     justify-content: center;
+    background-color: #93b1a7;
     text-align: center;
+    padding: 40px 0;
   `;
 
   const _renderCarousel = () => (

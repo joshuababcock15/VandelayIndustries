@@ -7,7 +7,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  title: 'Vandley Industries',
+  title: 'Vandaley Industries',
 };
 
 const Title = styled.h2`
@@ -52,8 +52,8 @@ export default function Footer(props) {
         <ContactWrapper>
           <Title>Awards:</Title>
           <Paragraph>20 time No soup for you award</Paragraph>
-          <Paragraph>2010-2019 PF Flyer award</Paragraph>
-          <Paragraph>6 time American pie award</Paragraph>
+          <Paragraph>2010-2019 Snickers award</Paragraph>
+          <Paragraph>6 time NBC award</Paragraph>
         </ContactWrapper>
       </Wrapper>
     </Container>

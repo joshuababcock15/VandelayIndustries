@@ -13,6 +13,7 @@ const defaultProps = {
 const Title = styled.h2`
   font-size: 4rem;
   color: black;
+  text-align: center;
 `;
 
 const TitleWrapper = styled.div`
