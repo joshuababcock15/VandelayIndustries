@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CardBody, CardTitle, CardText, CardImg, Card } from 'reactstrap';
@@ -9,6 +8,7 @@ const propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   link: PropTypes.string,
+  linkRef: PropTypes.string,
 };
 
 const defaultProps = {

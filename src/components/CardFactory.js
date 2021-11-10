@@ -59,7 +59,7 @@ const CardFactory = (props) => {
               {streetLine} {zipcode}
             </CardSubtitle>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {city} {country} {state}
+              {city}, {state} {country}
             </CardSubtitle>
             <Link href={linkRef}>{link}</Link>
           </CardBody>
