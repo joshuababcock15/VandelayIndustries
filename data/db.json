@@ -2,73 +2,253 @@
   "warehouses": [
     {
       "id": 0,
-      "warehouseName": "Pier 10 Holdings",
-      "warehouseDescription": "Key East Coast shipping/receiving location for storing finished product, ready for distribution.",
+      "warehouseName": "Latex Supreme Warehouses",
+      "warehouseDescription": "This latex warehouses holds inventory for every latex item in the business.",
       "warehouseAddress": {
-        "buildingName": "string",
-        "streetLine1": "string",
-        "streetLine2": "string",
-        "city": "string",
-        "stateProvince": "string",
-        "zipPostalCode": "string",
-        "country": "string"
+        "buildingName": "Latex Supreme",
+        "streetLine1": "1 E 161 St",
+        "city": "Bronx",
+        "stateProvince": "NY",
+        "zipPostalCode": "10451",
+        "country": "USA"
       }
     },
     {
       "id": 1,
-      "warehouseName": "The Other",
-      "warehouseDescription": "Key East Coast shipping/receiving location for storing finished product, ready for distribution.",
+      "warehouseName": "Bobblehead World Warehouse",
+      "warehouseDescription": "We are the number bobblehead warehouse in the world. Name anyone and Vandley Industries get it for you.",
       "warehouseAddress": {
-        "buildingName": "string",
-        "streetLine1": "string",
-        "streetLine2": "string",
-        "city": "string",
-        "stateProvince": "string",
-        "zipPostalCode": "string",
-        "country": "string"
+        "buildingName": "Bobblehead World",
+        "streetLine1": "41 Seaver Way",
+        "city": "Queens",
+        "stateProvince": "NY",
+        "zipPostalCode": "11368",
+        "country": "USA"
       }
     }
   ],
   "inventoryItems": [
     {
-      "id": 5,
       "warehouseId": 0,
-      "itemSKU": "444",
-      "itemQuantity": "5555",
-      "itemName": "Josh",
-      "itemDescription": "hiii"
+      "itemSKU": "KGWGWEFD",
+      "itemQuantity": "19000",
+      "itemName": "Balloons",
+      "itemDescription": "A balloon is a flexible bag that can be inflated with a gas, such as helium, hydrogen, nitrous oxide, oxygen, and air. ",
+      "id": 0
     },
     {
-      "itemSKU": "222",
-      "itemQuantity": "eee",
-      "itemName": "Josh test",
-      "itemDescription": "ff",
+      "warehouseId": 0,
+      "itemSKU": "ASDFSDAFEWR",
+      "itemQuantity": "250000",
+      "itemName": "Rubber bands",
+      "itemDescription": "A rubber band is a loop of rubber, usually ring or oval shaped, and commonly used to hold multiple objects together.",
+      "id": 1
+    },
+    {
+      "warehouseId": 0,
+      "itemSKU": "SDAFGDFASWR",
+      "itemQuantity": "3000000",
+      "itemName": "Bandages",
+      "itemDescription": "A bandage is a piece of material used either to support a medical device such as a dressing or splint, or on its own to provide support to or to restrict the movement of a part of the body. ",
+      "id": 2
+    },
+    {
+      "warehouseId": 0,
+      "itemSKU": "FKJGTYUDSGF",
+      "itemQuantity": "6500000",
+      "itemName": "Latex Gloves",
+      "itemDescription": "Medical gloves are disposable gloves used during medical examinations and procedures to help prevent cross-contamination between caregivers and patients.",
+      "id": 3
+    },
+    {
+      "warehouseId": 0,
+      "itemSKU": "DSFGDFSSAFD",
+      "itemQuantity": "4500000",
+      "itemName": "Toys",
+      "itemDescription": "A toy is an item that is used primarily by children though may also be marketed to adults under certain circumstances.",
+      "id": 4
+    },
+    {
+      "warehouseId": 0,
+      "itemSKU": "ADFSFASD",
+      "itemQuantity": "24234",
+      "itemName": "Paint",
+      "itemDescription": "Paint is any pigmented liquid, liquefiable, or solid mastic composition that, after application to a substrate in a thin layer, converts to a solid film.",
+      "id": 5
+    },
+    {
+      "warehouseId": 0,
+      "itemSKU": "EWRASDFVSAF",
+      "itemQuantity": "8200000",
+      "itemName": "Shoe soles",
+      "itemDescription": "The sole of a shoe, also known as the outsole, is the bottom part of the shoe that comes in direct contact with the ground.",
+      "id": 6
+    },
+    {
+      "warehouseId": 0,
+      "itemSKU": "ASDFSADFSDFA",
+      "itemQuantity": "33000000",
+      "itemName": "Rain Coat",
+      "itemDescription": "It is a waterproof or water-resistant suit worn to protect the body from rain. ",
+      "id": 7
+    },
+    {
+      "warehouseId": 1,
+      "itemSKU": "ASDFASDFDSAF",
+      "itemQuantity": "68000000",
+      "itemName": "George Washington",
+      "itemDescription": "George Washington was an American soldier, statesman, and Founding Father, who served as the first president of the United States from 1789 to 1797.",
+      "id": 8
+    },
+    {
       "warehouseId": "1",
+      "itemSKU": "DGFVZXVC",
+      "itemQuantity": "333",
+      "itemName": "Deter Jeter",
+      "itemDescription": "Derek Sanderson Jeter is an American former professional baseball shortstop, businessman, and baseball executive.",
+      "id": 9
+    },
+    {
+      "warehouseId": 1,
+      "itemSKU": "ASDFASDFDSAF",
+      "itemQuantity": "68000000",
+      "itemName": "Jim Collins",
+      "itemDescription": "Good to Great, if you don't know....then start reading.",
+      "id": 10
+    },
+    {
+      "warehouseId": "1",
+      "itemSKU": "SDFSDFSFD",
+      "itemQuantity": "55000",
+      "itemName": "Wayne Gretzky",
+      "itemDescription": "Also called 'The Great One', Wayne Douglas Gretzky CC is a Canadian former professional ice hockey player and former head coach.",
+      "id": 11
+    },
+    {
+      "warehouseId": 1,
+      "itemSKU": "ASDFASDFDSAF",
+      "itemQuantity": "68000000",
+      "itemName": "Michael Scott",
+      "itemDescription": "Michael Gary Scott is a fictional character in NBC's The Office, portrayed by Steve Carell.",
+      "id": 12
+    },
+    {
+      "warehouseId": "1",
+      "itemSKU": "222",
+      "itemQuantity": "333",
+      "itemName": "Stephen Covey",
+      "itemDescription": "Stephen Richards Covey was an American educator, author, businessman, and keynote speaker. His most popular book is The 7 Habits of Highly Effective People.",
       "id": 13
     },
     {
-      "itemSKU": "222",
-      "itemQuantity": "333",
-      "itemName": "narrow",
-      "itemDescription": "tw",
-      "warehouseId": "0",
-      "id": 14
-    },
-    {
-      "itemSKU": "222",
-      "itemQuantity": "111",
-      "itemName": "Caleb",
-      "itemDescription": "uuu",
       "warehouseId": "1",
-      "id": 15
+      "itemSKU": "SADFFSDAAFSD",
+      "itemQuantity": "6650000",
+      "itemName": "Elmo",
+      "itemDescription": "cElmo is a red Muppet character on the long-running PBS/HBO children's television show Sesame Street.",
+      "id": 14
+    }
+  ],
+  "factories": [
+    {
+      "id": 0,
+      "factoryName": "Newark Latex Mfg.",
+      "factoryDescription": "Key East Coast facility for raw latex material to be processed into final products for the medical industry.",
+      "factoryAddress": {
+        "buildingName": "Newark Latex",
+        "streetLine1": "173 E 161 St",
+        "city": "Bronx",
+        "stateProvince": "NY",
+        "zipPostalCode": "10451",
+        "country": "USA"
+      }
     },
     {
-      "itemSKU": "222",
-      "itemQuantity": "eee",
-      "itemName": "Caleb",
-      "itemDescription": "uu",
-      "warehouseId": "0",
-      "id": 16
+      "id": 1,
+      "factoryName": "Syntax Bobblehead Mfg.",
+      "factoryDescription": "This is a Buffalo, New York facility, where we have everything bobbleheads.",
+      "factoryAddress": {
+        "buildingName": "Syntax Bobblehead ",
+        "streetLine1": "464 Park Ave",
+        "city": "Buffalo",
+        "stateProvince": "NY",
+        "zipPostalCode": "14075",
+        "country": "USA"
+      }
+    }
+  ],
+  "machines": [
+    {
+      "factoryId": 0,
+      "id": 1,
+      "machineName": "Extruder AB-100",
+      "machineDescription": "Extruder with 1,000fpm output capacity"
+    },
+    {
+      "factoryId": 0,
+      "id": 2,
+      "machineName": "Inclined plane",
+      "machineDescription": " It makes it easier for us to move objects to higher or lower surfaces than if we lifted the objects directly upwards."
+    },
+    {
+      "factoryId": 0,
+      "id": 3,
+      "machineName": "Wedge",
+      "machineDescription": "Wedges work by changing direction and force applied to it."
+    },
+    {
+      "factoryId": 0,
+      "id": 4,
+      "machineName": "Screw",
+      "machineDescription": "Screws are useful for holding things together."
+    },
+    {
+      "factoryId": 0,
+      "id": 5,
+      "machineName": "Lever",
+      "machineDescription": "A lever is simply a plank or ridged beam that is free to rotate on a pivot."
+    },
+    {
+      "factoryId": 0,
+      "id": 6,
+      "machineName": "Wheel and Axle",
+      "machineDescription": "This simple machine involves two circular objects — a larger disc and a smaller cylinder both joined at the center."
+    },
+    {
+      "factoryId": 1,
+      "id": 7,
+      "machineName": "Extrusion",
+      "machineDescription": "Extrusion machines force uncured rubber through a die under pressure. This creates a shaped sheet – or 'profile', as it is known within the industry."
+    },
+    {
+      "factoryId": 1,
+      "id": 8,
+      "machineName": "Honing",
+      "machineDescription": "Honing machines, also known as hones, consist largely of one or more rotating tips that, in metalworking, enlarge holes to a precise diameter and improve surface finish."
+    },
+    {
+      "factoryId": 1,
+      "id": 9,
+      "machineName": "Flux Capacitor",
+      "machineDescription": "This requires a DeLorean and DMC-12 to allow you to time travel."
+    },
+    {
+      "factoryId": 1,
+      "id": 10,
+      "machineName": "Grinding",
+      "machineDescription": "Grinders are modern machining tools that use an abrasive wheel to create fine finishes or faint cuts."
+    },
+    {
+      "factoryId": 1,
+      "id": 11,
+      "machineName": "Pulley",
+      "machineDescription": "When you pull down on the rope, the pulley at the top of the pole turns, and the flag goes up."
+    },
+    {
+      "factoryId": 1,
+      "id": 12,
+      "machineName": "Hobbing",
+      "machineDescription": "A hobbing machine is similar to a milling machine in that a rotating cutter performs the cutting action, however, they allow for simultaneous movement of both the cutter and the product being machined."
     }
   ]
 }
