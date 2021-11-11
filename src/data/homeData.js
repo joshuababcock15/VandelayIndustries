@@ -7,7 +7,7 @@ const CardsData = {
     {
       imageSrc: vandelayTeam,
       imageAlt: 'about image',
-      title: 'Do you to learn more about the  Vandelay Industries?',
+      title: 'Do you want to learn more about the  Vandelay Industries?',
       subtitle:
         'It is known both for the quality of its product as well as its aggressive salesperson recruiting program.',
       link: 'Learn more',
