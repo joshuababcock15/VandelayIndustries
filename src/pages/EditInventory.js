@@ -35,12 +35,14 @@ const ButtonWrapper = styled.div`
 const EditInventory = ({ inventoryData }) => {
   const { inventoryItemId } = useParams();
 
-  const invertoryItem = inventoryData.filter(
+  const inventoryItem = inventoryData.filter(
     (item) => item.id.toString() === inventoryItemId
   );
 
+  const inventoryItemID = parseInt(inventoryItem[0]?.warehouseId);
+
   // eslint-disable-next-line no-unused-vars
-  const [inventory, setInvertory] = useState('');
+  const [inventory, setInventory] = useState('');
   const [editSKU, setEditSKU] = useState('');
   const [editQuantity, setEditQuantity] = useState('');
   const [editName, setEditName] = useState('');
@@ -51,10 +53,10 @@ const EditInventory = ({ inventoryData }) => {
 
   useEffect(() => {
     if (inventoryItemId) {
-      setEditSKU(invertoryItem[0]?.itemSKU);
-      setEditQuantity(invertoryItem[0]?.itemQuantity);
-      setEditName(invertoryItem[0]?.itemName);
-      setEditDescription(invertoryItem[0]?.itemDescription);
+      setEditSKU(inventoryItem[0]?.itemSKU);
+      setEditQuantity(inventoryItem[0]?.itemQuantity);
+      setEditName(inventoryItem[0]?.itemName);
+      setEditDescription(inventoryItem[0]?.itemDescription);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inventoryItemId]);
@@ -65,7 +67,7 @@ const EditInventory = ({ inventoryData }) => {
     const fetchInventory = async () => {
       try {
         const response = await api.get(`inventoryItems/${inventoryItemId}`);
-        setInvertory(response.data);
+        setInventory(response.data);
       } catch (err) {
         if (err.response) {
           console.log(err.response.data);
@@ -81,7 +83,7 @@ const EditInventory = ({ inventoryData }) => {
 
   const handleEdit = async () => {
     const updateInventory = {
-      warehouseId: parseInt(invertoryItem[0]?.warehouseId),
+      warehouseId: inventoryItemID,
       itemSKU: editSKU,
       itemQuantity: editQuantity,
       itemName: editName,
@@ -92,8 +94,8 @@ const EditInventory = ({ inventoryData }) => {
         `inventoryItems/${inventoryItemId}`,
         updateInventory
       );
-      setInvertory(
-        invertoryItem.map((item) =>
+      setInventory(
+        inventoryItem.map((item) =>
           item.id === inventoryItemId ? { ...response.data } : item
         )
       );
@@ -101,9 +103,7 @@ const EditInventory = ({ inventoryData }) => {
       setEditQuantity('');
       setEditName('');
       setEditDescription('');
-      history.push(
-        `/warehouses/${invertoryItem[0]?.warehouseId}/inventoryItems`
-      );
+      history.push(`/warehouses/${inventoryItemID}/inventoryItems`);
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -115,10 +115,8 @@ const EditInventory = ({ inventoryData }) => {
       const inventoryList = inventoryData.filter(
         (item) => item.id !== inventoryItemId
       );
-      setInvertory(inventoryList);
-      history.push(
-        `/warehouses/${invertoryItem[0]?.warehouseId}/inventoryItems`
-      );
+      setInventory(inventoryList);
+      history.push(`/warehouses/${inventoryItemID}/inventoryItems`);
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -135,7 +133,7 @@ const EditInventory = ({ inventoryData }) => {
             name="name"
             type="text"
             required
-            defaultValue={editName}
+            defaultValue={editName ?? inventory?.itemName}
             onChange={(e) => {
               setEditName(e.target.value);
             }}
@@ -148,7 +146,7 @@ const EditInventory = ({ inventoryData }) => {
             name="SKU"
             type="text"
             required
-            defaultValue={editSKU}
+            defaultValue={editSKU ?? inventory?.itemSKU}
             onChange={(e) => setEditSKU(e.target.value)}
           />
         </FormGroup>
@@ -159,7 +157,7 @@ const EditInventory = ({ inventoryData }) => {
             name="quantity"
             type="text"
             required
-            defaultValue={editQuantity}
+            defaultValue={editQuantity ?? inventory?.itemQuantity}
             onChange={(e) => setEditQuantity(e.target.value)}
           />
         </FormGroup>
@@ -169,15 +167,12 @@ const EditInventory = ({ inventoryData }) => {
             id="exampleText"
             name="text"
             type="textarea"
-            defaultValue={editDescription}
+            defaultValue={editDescription ?? inventory?.itemDescription}
             onChange={(e) => setEditDescription(e.target.value)}
           />
         </FormGroup>
         <ButtonWrapper>
-          <Button
-            type="submit"
-            onClick={() => handleEdit(invertoryItem[0]?.id)}
-          >
+          <Button type="submit" onClick={handleEdit}>
             Submit
           </Button>
           <StyledButton color="danger" onClick={modalOpen}>
