@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
 import {
@@ -13,10 +12,6 @@ import {
   ModalHeader,
 } from 'reactstrap';
 import api from '../api/factories';
-
-const propTypes = {
-  inventoryData: PropTypes.array,
-};
 
 const PageWrapper = styled.div`
   padding: 40px;
@@ -32,16 +27,8 @@ const ButtonWrapper = styled.div`
   justify-content: center;
 `;
 
-const EditInventory = ({ inventoryData }) => {
+const EditInventory = () => {
   const { inventoryItemId } = useParams();
-
-  const inventoryItem = inventoryData.filter(
-    (item) => item.id.toString() === inventoryItemId
-  );
-
-  const inventoryItemID = parseInt(inventoryItem[0]?.warehouseId);
-
-  // eslint-disable-next-line no-unused-vars
   const [inventory, setInventory] = useState('');
   const [editSKU, setEditSKU] = useState('');
   const [editQuantity, setEditQuantity] = useState('');
@@ -50,18 +37,8 @@ const EditInventory = ({ inventoryData }) => {
   const [modal, setModal] = useState(false);
   const modalClose = () => setModal(false);
   const modalOpen = () => setModal(true);
-
-  useEffect(() => {
-    if (inventoryItemId) {
-      setEditSKU(inventoryItem[0]?.itemSKU);
-      setEditQuantity(inventoryItem[0]?.itemQuantity);
-      setEditName(inventoryItem[0]?.itemName);
-      setEditDescription(inventoryItem[0]?.itemDescription);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inventoryItemId]);
-
   const history = useHistory();
+  const WarehouseId = parseInt(inventory?.warehouseId);
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -81,13 +58,22 @@ const EditInventory = ({ inventoryData }) => {
     fetchInventory();
   }, [inventoryItemId]);
 
+  useEffect(() => {
+    if (inventoryItemId) {
+      setEditSKU(inventory?.itemSKU);
+      setEditQuantity(inventory?.itemQuantity);
+      setEditName(inventory?.itemName);
+      setEditDescription(inventory?.itemDescription);
+    }
+  }, [inventoryItemId, inventory]);
+
   const handleEdit = async () => {
     const updateInventory = {
-      warehouseId: inventoryItemID,
-      itemSKU: editSKU,
-      itemQuantity: editQuantity,
-      itemName: editName,
-      itemDescription: editDescription,
+      warehouseId: WarehouseId,
+      itemSKU: editSKU ?? inventory?.itemSKU,
+      itemQuantity: editQuantity ?? inventory?.itemQuantity,
+      itemName: editName ?? inventory?.itemName,
+      itemDescription: editDescription ?? inventory?.itemDescription,
     };
     try {
       const response = await api.put(
@@ -95,7 +81,7 @@ const EditInventory = ({ inventoryData }) => {
         updateInventory
       );
       setInventory(
-        inventoryItem.map((item) =>
+        [inventory].map((item) =>
           item.id === inventoryItemId ? { ...response.data } : item
         )
       );
@@ -103,7 +89,7 @@ const EditInventory = ({ inventoryData }) => {
       setEditQuantity('');
       setEditName('');
       setEditDescription('');
-      history.push(`/warehouses/${inventoryItemID}/inventoryItems`);
+      history.push(`/warehouses/${WarehouseId}/inventoryItems`);
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -112,11 +98,11 @@ const EditInventory = ({ inventoryData }) => {
   const handleDelete = async () => {
     try {
       await api.delete(`inventoryItems/${inventoryItemId}`);
-      const inventoryList = inventoryData.filter(
+      const inventoryList = [inventory].filter(
         (item) => item.id !== inventoryItemId
       );
       setInventory(inventoryList);
-      history.push(`/warehouses/${inventoryItemID}/inventoryItems`);
+      history.push(`/warehouses/${WarehouseId}/inventoryItems`);
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -194,7 +180,5 @@ const EditInventory = ({ inventoryData }) => {
     </PageWrapper>
   );
 };
-
-EditInventory.propTypes = propTypes;
 
 export default EditInventory;
